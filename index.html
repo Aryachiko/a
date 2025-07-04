@@ -103,7 +103,7 @@
             font-size: 0.95em;
         }
 
-        /* Media query untuk tampilan responsif */
+        /* Media query untuk navigasi penjelasan di bawah tombol - tetap 1 kolom di layar kecil */
         @media (max-width: 768px) {
             .navigation-explanation ul {
                 flex-direction: column; /* Ubah ke satu kolom di layar kecil */
@@ -115,22 +115,25 @@
             }
         }
 
-        /* --- Perbaikan Utama untuk Bagian Volume Novel --- */
+        /* --- Perbaikan Utama untuk Bagian Volume Novel & Judul Hero --- */
+
+        /* Aturan default untuk kontainer volume (Flexbox) */
         #volumes .w3-row-padding {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px; /* Jarak antar item */
+            padding: 0 16px; /* Tambahkan padding horizontal agar tidak terlalu mepet ke tepi layar mobile */
         }
 
+        /* Aturan default untuk setiap item volume (3 kolom di desktop) */
         #volumes .w3-third {
-            /* Aturan default untuk layar besar (3 kolom) */
             flex: 1 1 calc(33.333% - 20px); 
             max-width: calc(33.333% - 20px);
-            box-sizing: border-box; /* Penting untuk perhitungan lebar yang akurat */
+            box-sizing: border-box; 
         }
 
-        /* Media query untuk Tablet & Layar Menengah (hingga 992px) - 2 kolom */
+        /* Media Query untuk Tablet & Layar Menengah (maks 992px) - 2 Kolom */
         @media (max-width: 992px) {
             #volumes .w3-third {
                 flex: 1 1 calc(50% - 20px); /* Mengatur 2 kolom */
@@ -138,21 +141,61 @@
             }
         }
 
-        /* Media query khusus untuk Mobile (hingga 600px) - tetap 2 kolom */
+        /* Media Query Khusus untuk Mobile (maks 600px) - Pastikan 2 Kolom */
         @media (max-width: 600px) {
-            #volumes .w3-third {
-                flex: 1 1 calc(50% - 20px); /* Tetap 2 kolom */
-                max-width: calc(50% - 20px);
+            /* Judul Utama di Hero Section */
+            #hero h1.w3-jumbo {
+                font-size: 2.5em !important; /* Ukuran font lebih kecil untuk mobile */
+                line-height: 1.2; /* Kerapatan baris */
+                padding: 0 10px; /* Sedikit padding agar tidak mepet */
             }
+            #hero p.w3-xlarge {
+                font-size: 1.2em !important; /* Ukuran font lebih kecil */
+            }
+
+            /* Volume Novel Section - Fokus memastikan 2 kolom */
+            #volumes .w3-row-padding {
+                /* Kita pastikan display flex dan flex-wrap ada di sini juga, 
+                   untuk menimpa jika ada konflik dari w3.css pada breakpoint ini */
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px; /* Sedikit kurangi gap agar lebih rapat */
+                padding: 0 10px; /* Sesuaikan padding agar lebih pas di mobile */
+            }
+            
+            #volumes .w3-third {
+                /* Penting: Gunakan flex-basis sekitar 48-49% untuk 2 kolom */
+                flex: 0 0 calc(50% - 15px); /* Tetap 2 kolom, dengan perhitungan gap */
+                max-width: calc(50% - 15px); /* Batasi lebar maksimal */
+                min-width: unset; /* Hapus min-width sebelumnya agar lebih fleksibel */
+            }
+
             .volume-item img {
                 width: 100%; /* Gambar mengisi penuh lebar kolom */
                 height: auto; /* Pertahankan rasio aspek */
                 object-fit: contain; /* Agar gambar sepenuhnya terlihat, tidak terpotong */
             }
+
+            /* Pastikan card volume juga menyesuaikan */
+            .volume-item {
+                padding: 5px; /* Kurangi padding dalam item volume */
+            }
         }
+
         /* Tambahan: Pastikan w3-margin-bottom bekerja dengan flexbox */
         .w3-margin-bottom {
-            margin-bottom: 20px !important; /* Tambahkan !important untuk menimpa jika ada konflik */
+            margin-bottom: 20px; /* Tidak perlu !important lagi jika flexbox sudah diatur dengan benar */
+        }
+
+        /* Menimpa beberapa aturan w3.css yang mungkin mengganggu */
+        .w3-row-padding .w3-third {
+            padding: 0px 8px; /* w3.css defaultnya padding 8px */
+        }
+        @media (max-width: 600px) {
+            .w3-row-padding .w3-third {
+                padding: 0; /* Hapus padding bawaan w3.css di mobile jika ingin rapat */
+            }
         }
 
     </style>
