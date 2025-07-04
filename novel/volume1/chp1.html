@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yahari Novel - Chapter 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body { font-family: sans-serif; }
+        
+        /* Padding atas untuk header fixed, agar konten tidak tertutup */
+        .page-content-wrapper {
+            padding-top: 64px; /* Sesuaikan dengan tinggi header */
+            padding-bottom: 32px; /* Padding bawah untuk footer */
+        }
+        
+        .chapter-main-content {
+            line-height: 1.8;
+            font-size: 1.1em;
+            padding: 20px;
+        }
+        
+        .chapter-nav-buttons .w3-button {
+            margin: 5px;
+        }
+        
+        /* Style untuk konten asli yang diambil dari file chp1.html sebelumnya */
+        .original-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .original-content td {
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+        
+        .original-content pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 5px solid #007bff;
+            margin: 20px 0;
+        }
+        
+        .original-content hr {
+            margin: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Styling untuk sidebar */
+        .sidebar {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .sidebar .w3-bar-block .w3-bar-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
+        
+        .sidebar .w3-bar-block .w3-bar-item.w3-button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .sidebar .w3-bar-block .w3-bar-item.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Styling untuk gambar ilustrasi di dalam chapter */
+        .chapter-illustration {
+            display: block; /* Agar bisa diatur margin auto untuk tengah */
+            margin: 0px auto 20px auto; /* Atas 0, samping auto untuk tengah, bawah 20px */
+            max-width: 100%; /* Pastikan gambar tidak melebihi lebar kontainer */
+            height: auto; /* Jaga rasio aspek */
+            border-radius: 8px; /* Sudut sedikit membulat */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sedikit bayangan */
+        }
+
+        #myBtn {
+            display: none; /* Tersembunyi secara default */
+            position: fixed; /* Posisi tetap/melekat */
+            bottom: 20px; /* Tempatkan tombol di bagian bawah halaman */
+            right: 30px; /* Tempatkan tombol 30px dari kanan */
+            z-index: 99; /* Pastikan tidak tumpang tindih */
+            border: none; /* Hapus border */
+            outline: none; /* Hapus outline */
+            background-color: #009688; /* Atur warna latar belakang */
+            color: white; /* Warna teks */
+            cursor: pointer; /* Tambahkan kursor penunjuk saat diarahkan */
+            padding: 15px; /* Sedikit padding */
+            border-radius: 50%; /* Sudut membulat */
+            font-size: 18px; /* Perbesar ukuran font */
+        }
+
+        #myBtn:hover {
+            background-color: #555; /* Tambahkan latar belakang abu-abu gelap saat diarahkan */
+        }
+
+        /* --- MEDIA QUERIES UNTUK KOMPATIBILITAS MOBILE --- */
+
+        /* Sembunyikan sidebar secara default di layar kecil, gunakan tombol */
+        .sidebar-desktop {
+            display: block; /* Default untuk desktop */
+        }
+        .sidebar-mobile {
+            display: none; /* Default tersembunyi untuk mobile */
+        }
+
+        @media (max-width: 992px) { /* Untuk tablet dan mobile */
+            .sidebar-desktop {
+                display: none; /* Sembunyikan sidebar di desktop view saat layar kecil */
+            }
+            .sidebar-mobile {
+                display: block; /* Tampilkan sidebar mobile di atas konten */
+                width: 100%; /* Ambil lebar penuh */
+                order: -1; /* Posisikan di atas main content jika menggunakan flex */
+            }
+            .chapter-main-content {
+                padding: 10px; /* Kurangi padding untuk mobile */
+                font-size: 1em; /* Sedikit perkecil font untuk kenyamanan baca mobile */
+            }
+            .original-content h1 {
+                font-size: 1.8em !important; /* Perkecil judul chapter utama */
+            }
+            .original-content h3 {
+                font-size: 1.3em !important; /* Perkecil sub-judul chapter */
+            }
+
+            /* Tombol Navigasi Bawah */
+            .chapter-nav-buttons .w3-third {
+                flex: 1 1 100%; /* Buat tombol full width */
+                max-width: 100%;
+                margin-bottom: 10px; /* Tambah jarak antar tombol */
+            }
+            .chapter-nav-buttons .w3-button {
+                width: 100%; /* Pastikan tombol mengisi lebar penuh */
+            }
+        }
+
+        @media (max-width: 600px) { /* Khusus untuk ponsel */
+            .chapter-main-content {
+                padding: 8px; /* Lebih kecil lagi paddingnya */
+                font-size: 0.95em; /* Font sedikit lebih kecil */
+            }
+            .original-content p {
+                line-height: 1.6; /* Sesuaikan line-height agar tidak terlalu padat */
+                text-align: justify; /* Pastikan rata kanan kiri */
+            }
+            .original-content h1 {
+                font-size: 1.5em !important; /* Lebih kecil lagi untuk h1 */
+            }
+            .original-content h3 {
+                font-size: 1.2em !important; /* Lebih kecil lagi untuk h3 */
+            }
+            #myBtn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+
+        /* Untuk menu mobile di header */
+        .w3-bar-block .w3-bar-item {
+            width: 100%;
+            display: block;
+            text-align: left;
+            padding: 10px 16px;
+        }
+
+        /* Perbaikan untuk header responsif agar "Novel Yahari" tetap ada */
+        .w3-top .w3-bar-item.w3-large.w3-hide-small {
+            display: block !important; /* Pastikan selalu terlihat */
+        }
+        @media (max-width: 600px) {
+            .w3-top .w3-bar-item.w3-large.w3-hide-small {
+                font-size: 1.2em !important; /* perkecil sedikit font di mobile */
+                padding: 8px 16px; /* Sesuaikan padding */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-top w3-bar w3-dark-grey w3-card-4">
+        <div class="w3-container">
+            <a href="../../index.html" class="w3-bar-item w3-button w3-mobile w3-large w3-hover-none w3-hover-text-light-grey">Novel Yahari</a>
+            
+            <div class="w3-right w3-hide-small">
+                <a href="../../index.html" class="w3-bar-item w3-button w3-mobile" title="Lihat semua volume novel">Home</a>
+                <a href="../../profil.html" class="w3-bar-item w3-button w3-mobile" title="Informasi tentang pencipta web">Profil</a>
+                <a href="../../karakter.html" class="w3-bar-item w3-button w3-mobile" title="Penjelasan karakter novel">Karakter</a>
+                <a href="../../ost.html" class="w3-bar-item w3-button w3-mobile" title="Original Soundtrack anime">OST</a>
+                <a href="../../pengunjung/pengunjung.html" class="w3-bar-item w3-button w3-mobile" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-mobile" title="Kontak pencipta web">Kontak</a>
+            </div>
+            
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+            
+            <div id="mobileNav" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+                <a href="../../index.html" class="w3-bar-item w3-button" title="Lihat semua volume novel">Home</a>
+                <a href="../../profil.html" class="w3-bar-item w3-button" title="Informasi tentang pencipta web">Profil</a>
+                <a href="../../karakter.html" class="w3-bar-item w3-button" title="Penjelasan karakter novel">Karakter</a>
+                <a href="../../ost.html" class="w3-bar-item w3-button" title="Original Soundtrack anime">OST</a>
+                <a href="../../pengunjung/pengunjung.html" class="w3-bar-item w3-button" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button" title="Kontak pencipta web">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="w3-container w3-white w3-card-4 w3-margin page-content-wrapper">
+        <div class="w3-row">
+            <div class="w3-col l3 m4 w3-hide-small w3-hide-medium sidebar sidebar-desktop">
+                <h3>DAFTAR ISI</h3>
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">Volume 1</h4>
+                <div class="w3-bar-block">
+                    <a href="prolog.html" class="w3-bar-item w3-button">Prolog</a>
+                    <a href="chp1.html" class="w3-bar-item w3-button active">Chapter 1: Biar Bagaimanapun, Hachiman Hikigaya Memang Busuk</a>
+                    <a href="chp2.html" class="w3-bar-item w3-button">Chapter 2: Sampai Kapan pun, Yukino Yukinoshita Tetap Keras Kepala</a>
+                    <a href="chp3.html" class="w3-bar-item w3-button">Chapter 3: Berulang Kali, Yui Yuigahama Bersikap Gelisah</a>
+                    <a href="chp4.html" class="w3-bar-item w3-button">Chapter 4: Meski Begitu, Kelas Berjalan Seperti Biasanya</a>
+                    <a href="chp5.html" class="w3-bar-item w3-button">Chapter 5: Intinya, Yoshiteru Zaimokuza itu Agak Gila</a>
+                    <a href="chp6.html" class="w3-bar-item w3-button">Chapter 6: Akan Tetapi, Saika Totsuka Mau Saja Menurut</a>
+                    <a href="chp7.html" class="w3-bar-item w3-button">Chapter 7: Terkadang Dewa Komedi Romantis Bisa Berbuat Hal Baik</a>
+                    <a href="chp8.html" class="w3-bar-item w3-button">Chapter 8: Kemudian Hikigaya Hachiman Berpikir</a>
+                </div>
+
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">
+                    <a href="volume2.html" class="w3-bar-item w3-button w3-block w3-left-align w3-text-grey w3-hover-text-blue" style="padding-left: 0; padding-right: 0;">Volume 2</a>
+                </h4>
+
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">
+                    <a href="volume3.html" class="w3-bar-item w3-button w3-block w3-left-align w3-text-grey w3-hover-text-blue" style="padding-left: 0; padding-right: 0;">Volume 3</a>
+                </h4>
+
+                <img src="../../gambar/YahariLoveCom_v01_thumb_cover.jpg" alt="Ilustrasi Chapter 1" class="w3-image chapter-illustration">
+            </div>
+
+            <div class="w3-col l9 m8 s12 chapter-main-content">
+                <div class="w3-hide-large w3-hide-small w3-hide-medium sidebar sidebar-mobile">
+                    <h3>DAFTAR ISI</h3>
+                    <h4 class="w3-margin-top w3-border-bottom w3-padding-small">Volume 1</h4>
+                    <div class="w3-bar-block">
+                        <a href="prolog.html" class="w3-bar-item w3-button">Prolog</a>
+                        <a href="chp1.html" class="w3-bar-item w3-button active">Chapter 1: Biar Bagaimanapun, Hachiman Hikigaya Memang Busuk</a>
+                        <a href="chp2.html" class="w3-bar-item w3-button">Chapter 2: Sampai Kapan pun, Yukino Yukinoshita Tetap Keras Kepala</a>
+                        <a href="chp3.html" class="w3-bar-item w3-button">Chapter 3: Berulang Kali, Yui Yuigahama Bersikap Gelisah</a>
+                        <a href="chp4.html" class="w3-bar-item w3-button">Chapter 4: Meski Begitu, Kelas Berjalan Seperti Biasanya</a>
+                        <a href="chp5.html" class="w3-bar-item w3-button">Chapter 5: Intinya, Yoshiteru Zaimokuza itu Agak Gila</a>
+                        <a href="chp6.html" class="w3-bar-item w3-button">Chapter 6: Akan Tetapi, Saika Totsuka Mau Saja Menurut</a>
+                        <a href="chp7.html" class="w3-bar-item w3-button">Chapter 7: Terkadang Dewa Komedi Romantis Bisa Berbuat Hal Baik</a>
+                        <a href="chp8.html" class="w3-bar-item w3-button">Chapter 8: Kemudian Hikigaya Hachiman Berpikir</a>
+                    </div>
+                    <h4 class="w3-margin-top w3-border-bottom w3-padding-small w3-text-grey">Volume 2</h4>
+                    <h4 class="w3-margin-top w3-border-bottom w3-padding-small w3-text-grey">Volume 3</h4>
+                    <img src="../../gambar/YahariLoveCom_v01_thumb_cover.jpg" alt="Ilustrasi Chapter 1" class="w3-image chapter-illustration">
+                </div>
+
+                <div class="original-content">
+                    <h1 class="w3-center">Yahari Ore no Seishun Love Come wa Machigatteiru - Chapter 1</h1>
+                    <hr>
+                    <center>
+                        <h3>Chapter 1: Biar Bagaimanapun, Hachiman Hikigaya Memang Busuk</h3>
+                    </center>
+                    <hr>
+                    <p align="justify">
+                        Sambil mengernyitkan alis matanya, Bu Shizuka Hiratsuka selaku guru Bahasa Jepang di kelasku, membacakan dengan nyaring esaiku ini tepat di depanku. Saat mendengarkannya, kusadari bahwa keahlian menulisku masih jauh dari yang diharapkan. Tadinya kupikir, aku bakal terdengar intelek jika merangkai kata-kata berbobot di dalamnya, namun yang ada, itu malah seperti cara murahan yang biasanya dipakai para penulis di awal karirnya.
+                    </p>
+                    <p align="justify">
+                        Jadi... itukah yang membuatku dipanggil ke ruang guru? Sepertinya bukan. Aku juga sadar kalau itu adalah esai amatiran.
+                    </p>
+
+                    <p>
+                        Selesai membaca, Bu Hiratsuka menempelkan tangan ke dahinya lalu menghela napas panjang.
+                    </p>
+
+                    <p align="justify">
+                        "Katakan, Hikigaya. Kau ingat tema untuk esai yang Ibu suruh kerjakan ini?"
+                    </p>
+
+                    <p>
+                        "...ya, temanya Menilik Kembali Masa-Masa di SMA."
+                    </p>
+
+                    <p align="justify">
+                        "Sudah jelas, 'kan? Lalu kenapa esai ini malah seperti surat ancaman? Memangnya kau ini teroris? Atau cuma orang bodoh, hah?"
+                    </p>
+
+                    <p>
+                        Bu Hiratsuka lalu menggaruk kepalanya sambil mendesah.
+                    </p>
+
+                    <p align="justify">
+                        Kini aku jadi berpikir, memakai kata Ibu untuk panggilan Ibu Guru kedengarannya lebih menambah daya tarik seksual ketimbang sekadar Guru Perempuan saja.
+                    </p>
+
+                    <p align="justify">
+                        Aku menyengir selagi melamunkannya, hingga gulungan kertas menghantam kepalaku.
+                    </p>
+
+                    <p align="justify">
+                        "Perhatikan kalau Ibu bicara!"
+                    </p>
+
+                    <p>
+                        "I-iya."
+                    </p>
+
+                    <p>
+                        "Tatapanmu kosong, persis seperti ikan mati."
+                    </p>
+
+                    <p>
+                        "Berarti tubuh saya kaya omega-3 dong, Bu? Berarti saya jenius banget."
+                    </p>
+
+                    <p>
+                        Bu Hiratsuka hanya terbengong mendengarnya.
+                    </p>
+
+                    <p>
+                        "Hikigaya, esai murahan apa ini? Beri Ibu penjelasan."
+                    </p>
+
+                    <p align="justify">
+                        Tatapan tajamnya mengarah padaku, dan pandangan geramnya cukup memberi kesan mematikan. Hanya wanita yang dikutuk oleh kecantikan saja yang mampu menampakkan ekspresi seberbahaya itu, hingga tanpa sadar memaksa dan membuat tertekan siapa saja yang melihatnya. Bisa dibilang, itu benar-benar mengerikan.
+                    </p>
+
+                    <p align="justify">
+                        "Eng... bagaimana, ya... saya memang sudah merenungi kehidupan SMA saya, 'kan? Memang seperti itulah kehidupan SMA zaman sekarang! Esai yang saya tulis sedikit banyak sudah menyinggung hal tersebut." Jawabku sambil terbata-bata. Aku bisa gugup hanya karena bicara dengan orang lain, tapi aku lebih gugup lagi jika lawan bicaraku seorang perempuan yang lebih tua.
+                    </p>
+
+                    <p>
+                        "Biasanya, tugas semacam ini butuh perenungan atas pengalaman pribadimu, tapi kenapa justru begini?"
+                    </p>
+
+                    <p align="justify">
+                        "Kalau begitu, harusnya Bu Hiratsuka menyisipkan maksud Ibu itu di kata pengantar, dong. Jika seperti itu, pasti akan saya kerjakan betul-betul. Berarti ini salah Ibu yang sudah memberi tugas menyesatkan, ya 'kan?"
+                    </p>
+
+                    <p>
+                        "Hei, Nak. Jangan berlagak pintar di depan Ibu, ya."
+                    </p>
+
+                    <p align="justify">
+                        "Nak? ...yah, memang benar, sih, beda umur antara saya dengan Bu Hiratsuka memang jauh, jadi, tak masalah jika Ibu memanggil Nak."
+                    </p>
+                    <p align="justify">
+                        Wuuusshhh. Yang barusan ternyata sebuah tinju. Tinju yang begitu saja dilesatkan secara tiba-tiba. Lebih penting lagi, sebuah keajaiban, karena tinju itu hanya menyerempet di samping pipiku.
+                    </p>
+
+                    <p>
+                        "Berikutnya tak akan meleset." Tatapannya penuh keseriusan.
+                    </p>
+
+                    <p align="justify">
+                        "Ma-maaf, Bu. Saya kerjakan lagi, deh." Aku harus bijak dalam berkata-kata jika ingin menunjukkan rasa sesalku. Dilihat dari keadaannya, Bu Hiratsuka ternyata orang yang sulit untuk merasa puas. Tampaknya tak ada lagi cara selain berlutut dan membungkuk di hadapannya.
+                    </p>
+
+                    <p align="justify">
+                        Kucoba untuk menyapu lipatan celanaku, dan selagi merapikannya, kutekuk kaki kananku hingga menempel ke lantai, pergerakan yang mulus dan sempurna.
+                    </p>
+                    <p align="justify">
+                        "Asal kau tahu, ini bukan berarti Ibu marah." ...oh, ternyata begitu jawabnya. Terkadang, orang-orang selalu berkata, Aku enggak marah, kok. Jadi bicara saja. Padahal, mereka tetap saja merasa marah. Tapi tak disangka, beliau memang tak benar-benar marah. Yah, terkecuali waktu kusinggung umurnya tadi.
+                    </p>
+                    <p>
+                        Diam-diam kuamati reaksi beliau sembari mengangkat lutut kananku dari lantai.
+                    </p>
+                    <p align="justify">
+                        Bu Hiratsuka merogoh kantung bajunya yang tampak menonjol karena payudaranya, lalu mengambil sebungkus Seven Stars[1] dari dalamnya dan mengetuk-ngetuk filter-nya ke atas meja — kelakuan orang-orang yang sudah berumur. Setelah mengambil rokok sebatang, beliau nyalakan pemantik Rp.10.000-an lalu membakar rokoknya. Beliau lalu menghisapnya sambil memandangku dengan wajah yang serius.
+                    </p>
+                    <p>
+                        "Kau masih belum bergabung pada klub mana pun, 'kan?"
+                    </p>
+                    <p>"Ya, belum."</p>
+                    <p>"...oh, ya, apa kau punya teman?"</p>
+                    <p>Seakan-akan beliau sudah tahu kalau aku memang tak punya teman.</p>
+                    <p align="justify">
+                        "Se-sepertinya Ibu harus tahu kalau saya menganut azas ketakberpihakan, oleh karenanya, saya tak boleh memiliki hubungan dekat dengan orang lain!"
+                    </p>
+                    <p>"Singkatnya, kau tak punya teman, 'kan?"</p>
+                    <p>"Ya-yah, begitu, deh..."</p>
+                    <p>Mendengar jawabanku, wajah Bu Hiratsuka pun berubah sumringah.</p>
+                    <p align="justify">
+                        "Jadi memang benar enggak punya, ya? Tepat seperti dugaan Ibu. Hanya dari tatapan kosongmu saja sudah ketahuan, kok!"
+                    </p>
+                    <p>Kalau sudah tahu, ya enggak usah sampai tanya-tanya seperti tadi, 'kan?</p>
+                    <p>Sambil mengangguk karena sudah mengerti, beliau memandang wajahku dengan ekspresi yang ditahan.</p>
+                    <p>"...lalu, kalau pacar atau semacamnya? Sudah punya, belum?"</p>
+                    <p>Semacamnya? Apa maksudnya itu? Kira-kira apa tanggapan beliau jika kubilang kalau pacarku itu seorang lelaki?</p>
+                    <p>"Sekarang, masih belum."</p>
+                    <p align="justify">
+                        Karena itu kutegaskan kata sekarang, dengan mempertimbangkan segala harapan yang kelak terjadi di masa mendatang.
+                    </p>
+                    <p>"Kasihan, jadi begitu, ya..."</p>
+                    <p align="justify">
+                        Sambil menjauhkan pandangannya, mata beliau pun tampak berkaca-kaca. Kuyakin itu hanya karena asap rokok. Sudahlah, hentikan. Berhenti memandangku dengan tatapan sentimentil itu.
+                    </p>
+                    <p align="justify">
+                        Lagi pula, untuk apa beliau mempertanyakan hal barusan? Apa beliau memang seorang guru yang begitu peduli pada muridnya?
+                    </p>
+                    <p align="justify">
+                        Apa beliau ingin menyampaikan padaku jika suatu saat aku bisa menjadi nila setitik, yang bisa merusak susu sebelanga?
+                    </p>
+                    <p align="justify">
+                        Atau mungkin beliau pernah bermasalah sewaktu masih menjadi murid SMA, lalu kembali ke sekolah lamanya ini sebagai seorang guru?[2] Bisa, tidak, kita kembali dulu ke pokok permasalahan?
+                    </p>
+                    <p>"Ya sudah, kalau begitu, kerjakan lagi saja esaimu."</p>
+                    <p>"Baik."</p>
+                    <p>Dan memang akan kukerjakan.</p>
+                    <p align="justify">
+                        Aku paham sekarang. Kali ini tulisanku pasti sesuai dengan yang diharapkan; aku harus menulisnya tanpa menyinggung pihak mana pun. Yang isinya tak beda jauh dengan ocehan yang ada di blog para model vulgar maupun aktris pengisi suara semacamnya, contoh:
+                    </p>
+                    <p><i>Makan malam kali ini apa, ya...? Ya ampun! Ternyata kari!</i></p>
+                    <p align="justify">
+                        Begitulah. Tunggu, lalu untuk apa ada pernyataan, Ya ampun! tadi? Jika hanya untuk menandakan ekspresi terkejut, jelas tak ada gunanya.
+                    </p>
+                    <p align="justify">
+                        Sampai di titik ini, segalanya sudah kuperhitungkan. Namun yang terjadi setelah ini, justru lebih dari yang kubayangkan.
+                    </p>
+                    <p align="justify">
+                        "Biar bagaimanapun, ucapan kasar dan sikapmu barusan sudah menyakiti perasaan Ibu. Apa tak ada yang mengajarimu, kalau kau tak boleh membahas masalah umur di depan wanita? Karena sikapmu tadi, jadi Ibu memaksamu untuk bergabung ke Klub Layanan Sosial. Lagi pula, yang namanya salah juga harus dihukum, 'kan?"
+                    </p>
+                    <p align="justify">
+                        Untuk seseorang yang telah dilukai perasaannya, Bu Hiratsuka tak tampak seperti orang yang berwibawa layaknya seorang guru. Kenyataannya beliau justru lebih ceria dari biasanya, bahkan cara bicaranya pun dibuat lebih menggoda dan <i>menggairahkan.</i>
+                    </p>
+                    <p align="justify">
+                        Itulah yang kupikirkan sekarang. Kata menggairahkan biasanya membuat kita berpikir ke arah yang tak jauh-jauh dari payudara, 'kan? Kenyataannya, mataku sekarang malah tertuju ke arah blus yang menonjolkan payudara Bu Hiratsuka.
+                    </p>
+                    <p><i>"Klub Layanan Sosial</i>? ...memangnya Ibu mau suruh apa saya di sana?"</p>
+                    <p align="justify">
+                        Selidik demi selidik. Yang kutahu, kegiatan itu mungkin saja hal-hal semacam membersihkan selokan, atau yang terburuk, menculik orang. Amit-amit jabang bayi, deh.
+                    </p>
+                    <p>"Ikuti saja Ibu."</p>
+                    <p align="justify">
+                        Bu Hiratsuka lalu mematikan rokoknya ke asbak dan segera bangkit dari tempat duduknya. Aku masih diam tak bergerak, berpikir mengenai pengajuan yang tanpa penjelasan maupun pengenalan tadi, namun rupanya, Bu Hiratsuka sudah ada di depan pintu seraya menoleh ke hadapanku.
+                    </p>
+                    <p>"Ayo jalan!"</p>
+                    <p>Disertai alis yang berkerut dan kebingungan di wajahku ini, kuikuti beliau dari belakang.</p>
+
+                    <hr>
+                    <center><h3> — II — </h3></center>
+                    <hr>
+                    <p align="justify">
+                        Gedung sekolah SMA Soubu di Kota Chiba ini mempunyai gaya bangunan yang sedikit berbeda dari lainnya. Bila dilihat dari atas, kurang lebih bentuknya agak mirip dengan huruf <i>kanji</i> 口 (kuchi) yang berarti mulut — berbentuk seperti bujur sangkar — tapi mungkin lebih mirip dengan huruf <i>katakana</i> untuk suku kata ロ (ro) — bujur sangkar dengan beberapa garis yang keluar dari sudut sisinya. Lalu sepasang kaki pada bujur sangkar itu adalah gedung audio visual yang melengkapi pemandangan lansekap sekolah kami. Gedung untuk kelas mengajar menghadap ke jalan raya, sementara paviliunnya menghadap ke arah sebaliknya. Jembatan yang menghubungkan dua bangunan tersebut terletak di lantai dua, yang kesemuanya membentuk pola seperti bujur sangkar.
+                    </p>
+                    <p align="justify">
+                        Gedung sekolah ini mengapit sebuah tempat di keempat sisinya, sebuah halaman terbuka yang diperuntukkan sebagai tanah suci para <i>riajuu.</i> Di tempat itu, mereka — baik anak lelaki maupun perempuan — saling berbaur satu sama lain saat jam istirahat makan siang. Dilanjutkan bermain bulutangkis untuk melancarkan pencernaan. Sepulang sekolah, dengan ditemani remangnya matahari senja, beberapa pasang kekasih saling melontar ucapan gombal sambil memandang bintang-bintang seiring desiran angin laut yang menyelimutinya.
+                    </p>
+                    <p><i>Aje gile.</i></p>
+                    <p align="justify">
+                        Dari sudut pandang orang luar, mereka sudah terlihat seperti para pemeran drama remaja yang berusaha tampil maksimal lewat perannya. Memikirkannya saja membuatku merinding. Andai aku ikut serta pun, paling-paling aku memilih peran sebuah pohon atau semacamnya.
+                    </p>
+                    <p align="justify">
+                        Bu Hiratsuka menyusuri sepanjangan lantai linoleum itu tanpa berucap sepatah kata pun, langkah kakinya beriring menuju ke paviliun.
+                    </p>
+                    <p>Aku punya firasat buruk tentang ini.</p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+                    <p align="justify"></p>
+
+                    <p align="justify">
+                                Terlebih lagi, tampaknya belum ada kejelasan mengenai seperti apa kegiatan Klub Layanan Sosial. Yang kutahu, Layanan Sosial bukanlah seperti kegiatan yang biasanya dilakukan sehari-hari; sebaliknya, ini seperti layanan yang disediakan dalam situasi-situasi tertentu. Contohnya, seorang pelayan yang melayani sang majikannya. Dalam kasus ini, layanan bisa berupa ucapan Selamat datang, yang bisa membuat perasaan sang majikan jadi menggebu-gebu hingga bisa menyerukan LETSA PARTY![3]
+                            </p>
+                            <p align="justify">
+                                Tapi di kenyataannya, hal itu takkan mungkin terjadi. Tunggu. Sebenarnya itu bukan hal mustahil asal ada kesepakatan harga sebelumnya. Tetapi jika segalanya bisa dibeli dengan uang, berarti mimpi dan cita-cita sudah tak berlaku lagi di dunia yang busuk ini. Biar bagaimanapun, yang namanya Layanan bukanlah hal yang baik.
+                            </p>
+                            <p align="justify">
+                                Lalu yang ada sekarang, kami sudah berada di paviliun. Sudah pasti aku bakal disuruh bersih-bersih di sana, seperti memindahkan piano ke ruang musik, membuang limbah sisa-sisa laboratorium biologi, menyusun koleksi katalog perpustakaan, dan sebagainya. Kalau memang begitu, berarti aku harus sesegera mungkin mengambil langkah antisipasi.
+                            </p>
+                            <p>"Asal Ibu tahu, saya punya penyakit kronis di sekitar selangkangan, lo. Kalau enggak salah namanya... Her-Her-Herpes, ya? Iya, itu..."</p>
+                            <p>"Jika yang kaumaksud itu Hernia, tak usah khawatir. Ibu tak melibatkanmu dalam pekerjaan kasar, kok."</p>
+                            <p align="justify">
+                                Beliau menoleh ke belakang sambil menatapku dengan ekspresi mengejek, layaknya sedang melihat orang bodoh.
+                            </p>
+                            <p align="justify">
+                                Aku paham. Berarti kegiatan yang dimaksud itu semacam penelitian atau pekerjaan administrasi, 'kan? Jika benar, maka kegiatan tersebut justru lebih sulit ketimbang kerja fisik. Siksaan ini ibarat seperti keluar dari kandang singa, masuk ke kandang buaya.
+                            </p>
+                            <p>"Penyakit ini kadang kambuh ketika saya memasuki ruang kelas, Bu."</p>
+                            <p>"Kau kok sekarang justru terdengar seperti sniper berhidung panjang, ya? Memangnya kau ini anggota Bajak Laut Topi Jerami?"[4]</p>
+                            <p>Oh, ternyata beliau juga senang membaca shounen manga,[5] ya?</p>
+                            <p align="justify">
+                                Terserahlah. Selama bisa mengerjakannya, akan kukerjakan sendiri. Aku bisa mengubah diriku ini layaknya sebuah mesin. Takkan jadi masalah andai kutiadakan hasrat manusiawiku. Kalau perlu, aku bisa menjadi sebuah sekrup.[6]
+                            </p>
+                            <p>"Kita sudah sampai."</p>
+                            <p align="justify">
+                                Ruangan di mana Bu Hiratsuka menghentikan langkahnya ini, dari luar sudah terlihat tak biasa. Tak ada tulisan apa pun yang tertera pada pelat pintunya. Selagi kutatap pelat tersebut dengan penuh keheranan, tiba-tiba saja Bu Hiratsuka menggeser pintu untuk membukanya. Meja dan bangku tertumpuk rapi di pojok ruangan. Mungkin ini dulunya gudang. Jika dibandingkan dengan ruang kelas lainnya, tak ada yang tampak istimewa dengan isi di dalamnya. Tak lebih, ini hanyalah ruang kelas biasa. Meski begitu, yang sangat jelas berbeda dari segala yang ada di ruangan ini, adalah sosok seorang gadis.
+                            </p>
+                            <p align="justify">
+                                Gadis itu membaca bukunya sembari dibalut sinar senja. Pemandangan itu tampak bagai sebuah ilusi maupun adegan dalam sebuah lukisan. Seolah ia akan tetap duduk di sana sambil membaca, meski dunia ini berakhir.
+                            </p>
+                            <p align="justify">
+                                Saat melihatnya, tubuh maupun jiwaku serasa membeku.
+                            </p>
+                            <p align="justify">
+                                Tak sengaja aku merasa kagum karenanya.
+                            </p>
+                            <p align="justify">
+                                Menyadari ada yang datang, ia pun menyelipkan pembatas buku pada bacaannya lalu menengadahkan kepalanya menghadap kami.
+                            </p>
+                            <p>"Bu Hiratsuka. Saya yakin sudah memberitahu Ibu untuk mengetuk pintu terlebih dulu sebelum masuk."</p>
+                            <p align="justify">
+                                Ciri yang dimilikinya begitu menarik. Rambut hitamnya panjang menjuntai. Meski saat di sekolah ia mengenakan seragam perempuan pada umumnya, namun ia seakan berada dalam golongannya sendiri.
+                            </p>
+                            <p>"Kau juga tak merespon meski sudah Ibu ketuk."</p>
+                            <p align="justify">
+                                Tampak ada kesan tak puas saat ia mendengar jawaban Bu Hiratsuka tadi.
+                            </p>
+                            <p>"Lalu, siapa anak yang tampak&nbsp;lola&nbsp;yang bersama Ibu itu?"</p>
+                            <p align="justify">
+                                Tatapan dinginnya tertuju padaku.
+                            </p>
+                            <p align="justify">
+                                Aku tahu perempuan ini.
+                            </p>
+                            <p align="justify">
+                                <strong>Yukino Yukinoshita</strong> dari Kelas 2-J.
+                            </p>
+                            <p align="justify">
+                                Tentu saja aku hanya tahu nama dan wajahnya. Kami tak pernah terlibat pembicaraan sebelum ini. Sebuah kejadian langka jika aku bisa terlibat pembicaraan dengan orang-orang di sekolah, itu sebabnya, mustahil bila hal tersebut sampai terjadi.
+                            </p>
+                            <p align="justify">
+                                SMA Soubu memiliki sembilan kelas yang menyesuaikan standar pendidikannya. Salah satunya yaitu kelas dengan standar internasional — Kelas J. Standar rata-rata yang dimiliki kelas tersebut bisa sampai dua atau tiga tingkat di atas kelas reguler, dan kelas itu diisi dengan murid-murid yang pernah belajar di luar negeri maupun mereka yang ingin berencana melanjutkan pendidikannya ke luar negeri.
+                            </p>
+                            <p align="justify">
+                                Di antara murid-murid tersebut, ada satu yang begitu menonjol, atau bisa dibilang, tanpa sadar menarik perhatian orang-orang, ialah Yukino Yukinoshita.
+                            </p>
+                            <p align="justify">
+                                Saat UTS maupun UAS, nilai tinggi yang ia peroleh secara konsisten, mencantumkan namanya sebagai juara umum di angkatan kelas kami. Seakan belum cukup, penampilan menawan yang ia miliki membuatnya selalu dihujani perhatian sekitarnya. Singkatnya, ialah contoh nyata gadis paling cantik dan sempurna di sekolah ini, dan semua orang pun mengakuinya.
+                            </p>
+                            <p align="justify">
+                                Itu sebabnya ia tak mengenalku, meski aku tak begitu peduli. Namun tetap saja, aku masih merasa sakit hati karena disebut&nbsp;lola. Aku cukup yakin kalau sebutan itu mirip dengan nama merek sebuah permen zaman dulu, yang sekarang sudah jarang kulihat.[7]&nbsp;Walau aku sudah berusaha mengalihkan hal itu, tetap saja tak mengubah fakta kalau perkataannya memang menyakitkan.
+                            </p>
+                            <p>"Ini Hikigaya. Ia akan bergabung ke klub ini."</p>
+                            <p align="justify">
+                                Seolah terpengaruh kata-kata beliau, tanpa sadar aku membungkukkan badan. Kuyakin tanpa sengaja aku memperkenalkan diri.
+                            </p>
+                            <p>"Namaku Hachiman Hikigaya dari Kelas 2-F. Eng... hei. Apa maksud Ibu dengan&nbsp;bergabung?"&nbsp;Siapa juga yang mau gabung? Lagi pula, sebenarnya klub apa ini?</p>
+                            <p align="justify">
+                                Seperti tahu apa yang akan kukatakan, Bu Hiratsuka langsung memotong.
+                            </p>
+                            <p>"Ini hukuman atas perbuatanmu tadi, jadi kau harus ikut serta dalam kegiatan klub ini. Ibu takkan menanggapi segala bentuk keberatan, bantahan, protes maupun keluhanmu. Gunakan saja waktumu itu untuk menjernihkan pikiran serta merenungi perbuatanmu."&nbsp;Pernyataan tegas yang tak bisa dibantah, tanpa menyisakan ruang untukku memberi alasan.</p>
+                            <p>"Lihat saja, dari penampilannya sudah terlihat kalau ia sudah busuk dari dalam. Alhasil, ia selalu berada dalam dunianya sendiri. Kasihan sekali, 'kan?"</p>
+                            <p align="justify">
+                                Jadi aku hanya dinilai dari penampilan luarku saja.
+                            </p>
+                            <p align="justify">
+                                Bu Hiratsuka lalu menoleh ke arah Yukinoshita dan berkata.&nbsp;"Ibu pikir, jika berbaur dengan orang lain, mungkin ia bisa sedikit belajar memperbaiki sikapnya. Ibu serahkan ia padamu. Tolong perbaiki sikap menentang dan menjauhi orang lainnya itu."
+                            </p>
+                            <p>"Jika demikian, saya rasa bukan masalah kalau Ibu memakai kekerasan untuk mendisiplinkan anak ini."</p>
+                            <p>...perempuan yang mengerikan.</p>
+                            <p>"Jika itu memang harus, dari dulu pasti sudah Ibu lakukan, tapi di zaman sekarang, hal tersebut bakal jadi masalah. Dan juga, kekerasan secara fisik sudah tak lagi diperbolehkan."</p>
+                            <p>...rasanya seolah beliau mau bilang, kalau kekerasan secara mental masih bisa diperbolehkan.</p>
+                            <p>"Dengan segala hormat, saya menolak. Saya merasa ada motif terselubung di balik tatapan matanya yang busuk. Saya merasa sedang dalam bahaya, Bu."</p>
+                            <p align="justify">
+                                Sambil menatap tajam ke arahku, Ia pun langsung membetulkan kerah bajunya, padahal tak ada yang tampak berantakan pada caranya berbusana. Terlebih, tak ada juga yang mau melihat dadanya yang biasa-biasa saja itu. Sungguh, takkan ada orang yang mau. Andaikata aku tak sengaja melihatnya pun, paling-paling itu cuma dalam hitungan detik.
+                            </p>
+                            <p>"Tak usah cemas, Yukinoshita. Mata dan hatinya memang sudah busuk, makanya ia bisa menahan diri dan memperhitungkan untung rugi dari segala tindakan yang ia lakukan. Ia takkan berani melakukan hal-hal yang bisa berurusan dengan aparat berwajib. Bisa dibilang, ia tak lebih dari preman kampung."</p>
+                            <p>"Bagi saya itu sama sekali bukan pujian. Ketimbang memakai istilah&nbsp;untung rugi&nbsp;dan&nbsp;menahan diri, saya lebih memilih jika Ibu memakai istilah&nbsp;punya akal sehat dalam mengambil keputusan."</p>
+                            <p>"Oh... preman kampung toh..."&nbsp;Ucap Yukinoshita.</p>
+                            <p>"Kau malah percaya kata-kata Bu Hiratsuka daripada penjelasanku..."</p>
+                            <p align="justify">
+                                Apa mungkin kata-kata Bu Hiratsuka berhasil membujuknya ataukah memang ia percaya kalau aku ini seorang preman kampung? Apa pun itu, sosokku di pikiran Yukinoshita sudah jauh dari yang aku harapkan.
+                            </p>
+                            <p>"Jika itu memang permintaan Ibu, saya tak bisa menolaknya... baiklah, saya terima."&nbsp;Tanggapnya dengan penuh rasa penolakan.</p>
+                            <p align="justify">
+                                Meski begitu, Bu Hiratsuka tampak tersenyum puas.
+                            </p>
+                            <p>"Bagus. Kalau begitu, Ibu serahkan sisanya padamu."</p>
+                            <p align="justify">
+                                Beliau pun pergi setelahnya. Meninggalkanku yang masih berdiri termenung.
+                            </p>
+
+                            <hr>
+                            <center><h3> — II — </h3></center>
+                            <hr>
+
+                            <p align="justify">
+                                Sejujurnya, meninggalkanku sendiri seperti ini justru membuatku lebih nyaman. Berada di lingkungan yang dikucilkan seperti ini juga sudah biasa bagiku, malah bisa membuatku merasa tenang. Bunyi jarum jam di dinding yang bergerak perlahan pun semakin jelas terdengar.
+                            </p>
+                            <p align="justify">
+                                Eh, tunggu, yang benar saja? Apa cerita ini tiba-tiba berkembang ke kisah komedi romantis? Semuanya justru jadi tampak konyol. Walau sebenarnya aku tak punya keluhan mengenai situasi ini.
+                            </p>
+                            <p align="justify">
+                                Aku jadi teringat lagi kenangan pahitku saat masih SMP dulu.
+                            </p>
+                            <p align="justify">
+                                Jam pelajaran telah berakhir; menyisakan dua orang murid di dalam ruang kelas.
+                            </p>
+                            <p align="justify">
+                                Tirai terkibar dengan lembutnya seiring dengan semilir angin dan remang-remang matahari senja yang memenuhi ruangan. Kemudian, terucaplah sebuah pernyataan cinta dari seorang anak lelaki.
+                            </p>
+                            <p align="justify">
+                                Sampai dengan saat ini, suara perempuan itu masih terngiang jelas di telingaku.
+                            </p>
+                            <p><i>Kita berteman saja, ya?</i></p>
+                            <p align="justify">
+                                Sungguh sebuah kenangan pahit. Setelahnya, kami memang berteman tapi tak pernah ada percakapan semenjak itu. Berkat kejadian tersebut, aku jadi tak pernah lagi berniat mencari teman, bercakap-cakap, apa lagi berpacaran. Bisa dibilang, kisah komedi romantis yang melibatkan diriku dengan perempuan cantik dalam ruangan tertutup, tak pernah berjalan lancar di kehidupan nyata.
+                            </p>
+                            <p align="justify">
+                                Terbiasa akan hal itu, membuatku bisa menghindari perangkap semacamnya hingga saat ini. Para perempuan cenderung menunjukkan ketertarikannya hanya pada hal-hal sensual atau para&nbsp;<i>riajuu</i>&nbsp;dan makhluk sejenisnya, lalu menjalin&nbsp;<i>hubungan yang tak sehat</i>&nbsp;dengan mereka.
+                            </p>
+                            <p align="justify">
+                                Singkat kata, mereka musuhku.
+                            </p>
+                            <p align="justify">
+                                Sampai sekarang aku selalu berusaha supaya kenangan itu tak kualami kembali. Cara tercepat agar bisa terhindar dari situasi yang seperti kisah komedi romantis ini yaitu membuat diriku menjadi orang yang dibenci. Mungkin aku akan terluka, namun demi harga diri ini, sikap bijak dan semacamnya tak lagi kuperlukan!
+                            </p>
+                            <p align="justify">
+                                Menurut teori, sebaiknya aku mengintimidasi Yukinoshita dengan tatapan benci. Membiarkannya terbunuh oleh tatapan hewan buas!
+                            </p>
+                            <p>Grrrr!—</p>
+                            <p align="justify">
+                                Spontan membalas, Yukinoshita menatap hina padaku seakan aku ini onggokan sampah. Ia memicingkan mata diselingi desahan panjang. Dan dengan suaranya yang kecil ibarat desiran sungai, ia menegurku,
+                            </p>
+                            <p>"...daripada berdiri sambil menggerutu di situ, kenapa kau tak ambil kursi lalu duduk?"</p>
+                            <p>"Hah? Oh, benar juga. Maaf."</p>
+                            <p align="justify">
+                                Wuih... apa-apaan barusan itu? Memangnya ia itu hewan buas, apa?
+                            </p>
+                            <p align="justify">
+                                Tatapan seperti itu bisa membunuh lima orang tak berdosa. Sama halnya yang menimpa penyanyi, Tomoko Matsuhima yang pernah diterkam binatang buas.[8]Apa tanpa kusadari — tanpa sengaja — aku memohon ampun padanya? Meski ia tak punya niat mengintimidasiku, namun Yukinoshita sudah menjadikanku layaknya seorang tawanan. Dengan hati yang terguncang ini, kuambil sebuah kursi kosong kemudian duduk.
+                            </p>
+                            <p align="justify">
+                                Setelahnya, ia tak begitu menunjukkan perhatiannya lagi padaku. Di saat yang sama ia kembali membuka buku bacaannya. Terdengar suara dari lembar halaman yang ia balik. Jika hanya melihat dari sampulnya saja, aku tak bisa tahu buku apa yang sedang ia baca, namun mungkin itu semacam karya sastra. Mungkin saja karya Salinger, atau Hemingway, atau bisa saja Tolstoy. Seperti itulah kesan yang ia tunjukkan.
+                            </p>
+                            <p align="justify">
+                                Yukinoshita terlihat layaknya seorang perempuan terhormat, itu karena ia memang seorang murid teladan, dan tanpa embel-embel apa pun, ia akan selalu jadi gadis yang cantik. Namun layaknya orang dari kalangan elit, Yukino Yukinoshita pun terasingkan dari segala lingkungan sosial. Seperti halnya namanya,&nbsp;<i>yuki no shita no yuki</i>&nbsp;(salju di bawah salju), seberapa pun cantik dirinya, takkan ada yang bisa menyentuh ataupun menjangkaunya. Yang bisa orang-orang lakukan hanyalah membayangkan kecantikannya saja.
+                            </p>
+                            <p align="justify">
+                                Sejujurnya, aku tak pernah mengira bakal bisa duduk berdekatan dengannya. Kalau saja aku punya teman, pasti aku membanggakan hal ini pada mereka; mungkin aku akan bertanya apa yang harus kuperbuat dengan si Nona Cantik di ruangan ini.
+                            </p>
+                            <p>"Ada apa?"&nbsp;Tanyanya.</p>
+                            <p align="justify">
+                                Mungkin karena aku terlalu sering menatapnya, Yukinoshita jadi mengeryitkan alis matanya karena tak senang dan balas menatapku.
+                            </p>
+                            <p>"Oh, maaf. Aku hanya bingung harus berbuat apa."</p>
+                            <p>"Bingung?"</p>
+                            <p>"Soalnya, tanpa penjelasan apa-apa aku dipaksa kemari."</p>
+                            <p align="justify">
+                                Disertai suara berdecak dari mulutnya, dengan tegas Yukinoshita menutup buku bacaannya; seolah ingin menunjukkan kekesalannya ke seluruh dunia. Lalu setelah menyayatku dengan tatapan tajamnya, ia pun menghela napas karena pasrah dan mulai berbicara.
+                            </p>
+                            <p>"Benar juga... ya sudah, kita adakan permainan."</p>
+                            <p>"Permainan?"</p>
+                            <p>"Benar. Permainan menebak identitas klub ini. Jadi menurutmu, klub apa ini?"</p>
+                            <p align="justify">
+                                Permainan di ruang tertutup bersama seorang gadis cantik...
+                            </p>
+                            <p align="justify">
+                                Dan aku merasa jika ini bukan sesuatu yang akan menjurus ke adegan mesum. Daripada disebut permainan yang seru, suasana yang ditampakkan Yukinoshita lebih seperti sedang mengasah belati hingga tajam. Saking tajamnya sampai-sampai aku berpikir akan mati jika aku kalah di permainan ini. Hilang ke mana suasana komedi romatis yang tadi? Bukannya ini malah seperti adegan di dalam&nbsp;<i>manga</i>&nbsp;Kaiji?[9]
+                            </p>
+                            <p align="justify">
+                                Karena takutnya diriku akan kalah, keringat dingin mengucur dari tubuhku. Aku pun akhirnya meninjau baik-baik ruangan ini untuk mencari petunjuk.
+                            </p>
+                            <p>"Apa ada anggota lagi selain dirimu di klub ini?"</p>
+                            <p>"Tak ada."</p>
+                            <p align="justify">
+                                Jika memang demikian, lalu bagaimana caranya klub ini bisa bertahan, ya? Pertanyaan bagus.
+                            </p>
+                            <p align="justify">
+                                Cukup sudah. Tak ada petunjuk sama sekali.
+                            </p>
+                            <p align="justify">
+                                Eh, tunggu. Sebaliknya, hal tersebutlah petunjuknya. Bukan bermaksud sombong, sih, namun karena sedari kecil aku sudah jarang berteman, bisa dibilang aku benar-benar jago jika dalam permainan satu orang. Aku cukup percaya diri jika menyelesaikan soal semacam TTS atau sejenisnya. Malah kupikir, mungkin aku pun bisa menang dalam lomba cerdas cermat antar-SMA. Jadi inilah perkiraanku: Jika ini adalah klub yang tak bisa lagi merekrut anggota baru, maka anggota lain selain dirinya takkan pernah ada. Banyak yang bisa aku tangkap dari hal tesebut. Dan jika menyatukan fakta-fakta barusan, maka jawabannya sudah jelas—
+                            </p>
+                            <p>"Klub Sastra?"</p>
+                            <p>"Oh? Lalu alasannya?"&nbsp;Yukinoshita bertanya penuh antusias.</p>
+                            <p>"Lingkungannya yang khas; tak begitu memerlukan perlengkapan khusus dalam kegiatannya; dan fakta kalau klub ini tak dibubarkan meski kekurangan anggota. Singkatnya, kegiatan klub ini tak membutuhkan banyak biaya. Terlebih, kau sedang membaca buku. Jawabannya pun sudah kautunjukkan dari awal."</p>
+                            <p align="justify">
+                                Menurutku itu hipotesis yang sempurna. Meski tanpa bantuan dari anak SD berkaca mata,[10]&nbsp;aku masih bisa menjelaskannya dengan gamblang. Ini perkara mudah.
+                            </p>
+                            <p align="justify">
+                                Hal itu harusnya membuat sang Nona Yukino merasa kagum dan berkata&nbsp;<i>Begitu rupanya...</i>&nbsp;sambil diselingi sedikit rasa kesal.
+                            </p>
+                            <p>"Salah."</p>
+                            <p align="justify">
+                                Dengan nada tegas ia menjawab, yang kemudian diselingi tawa sinis.
+                            </p>
+                            <p align="justify">
+                                Kini ia malah membuatku jengkel. Memangnya dirinya itu Manusia Super Sempurna yang tanpa cela, apa? Justru ia tampak seperti Manusia Super Kejam.[11]
+                            </p>
+                            <p>"Jadi, ini klub apa?"</p>
+                            <p align="justify">
+                                Yukinoshita tampak tak peduli dengan tanggapanku yang sedikit mengesankan rasa jengkel tadi. Ia kemudian memberi penjelasan, sebagai tanda bahwa permainan ini masih tetap berjalan.
+                            </p>
+                            <p>"Baiklah, akan kuberi petunjuk. Kegiatan klub ini melibatkan keikutsertaan diriku."</p>
+                            <p align="justify">
+                                Akhirnya petunjuk yang ditunggu-tunggu muncul. Tapi tetap saja tak sedikit pun membantu. Ujung-ujungnya aku malah kembali ke jawabanku sebelumnya — Klub Sastra.
+                            </p>
+                            <p align="justify">
+                                Tunggu dulu... tunggu sebentar dan tenanglah dulu. Santai saja. Santailah dulu, Hachiman Hikigaya.
+                            </p>
+                            <p align="justify">
+                                Ia bilang tadi tak ada lagi anggota klub selain dirinya. Meski begitu, klub ini masih bisa tetap aktif.
+                            </p>
+                            <p align="justify">
+                                Dengan kata lain, bisa saja ada anggota tak terlihat, contohnya seperti hantu, ya 'kan? Lalu yang ganjil dalam cerita ini adalah, anggota tak terlihat itu ternyata memang benar-benar hantu. Akhirnya kisah komedi romantis ini pun berkembang ke hubungan antara diriku dengan seorang hantu perempuan jelita.
+                            </p>
+                            <p>"Komunitas Penelitian Hal Gaib!"</p>
+                            <p>"Yang kutanyakan adalah&nbsp;<i>klub</i>."</p>
+                            <p>"Eng... Klub Penelitian Hal Gaib!"</p>
+                            <p>"Salah..."&nbsp;Ia pun menghela napas.&nbsp;"Konyol sekali. Mana ada yang namanya hantu."</p>
+                            <p align="justify">
+                                Padahal ia bisa saja berkata layaknya gadis manis seperti,&nbsp;<i>Ma-mana ada yang namanya hantu! A-aku bilang begitu, bu-bukannya karena aku takut lo, ya.</i>&nbsp;Yang terjadi justru ia memandangku dengan pandangan yang begitu menghina. Seolah matanya berkata&nbsp;<i>Orang-orang bodoh, mati saja sana.</i>
+                            </p>
+                            <p>"Aku menyerah. Aku benar-benar tak tahu."</p>
+
+                            <hr>
+                            <center><h3> — II — </h3></center>
+                            <hr>
+
+                            <p align="justify">
+                                Yah, andai aku bisa mengira-ngira apa maksudnya. Mestinya ia bisa membuat hal ini jadi lebih mudah, 'kan? Minimal petunjuk semacam,&nbsp;<i>Di atas rumahmu ada banjir air mata, tapi di bawahnya ada panas yang menyala-nyala — Kenapa bisa begitu? Sudah jelas karena rumahmu sedang kebakaran.</i>&nbsp;Tapi kalau yang begini namanya bukan lagi tebak-tebakan; ini malah seperti teka-teki.
+                            </p>
+                            <p>"Hikigaya. Kapan terakhir kali kau bicara dengan seorang gadis?"</p>
+                            <p align="justify">
+                                Tiba-tiba saja ia keluar dari topik dan menanyakan hal tersebut untuk mengalihkan perhatian. Sungguh perempuan yang lancang.
+                            </p>
+                            <p align="justify">
+                                Aku cukup yakin dengan kemampuan mengingatku. Bahkan aku bisa mengingat beberapa omongan tak penting yang sering dilupakan orang, jadinya malah banyak perempuan di kelasku yang menganggap aku seperti seorang penguntit.
+                            </p>
+                            <p align="justify">
+                                Berdasarkan daya ingat hipokampus[12]&nbsp;milikku yang di atas rata-rata ini, terakhir kalinya aku berbincang dengan seorang gadis yaitu pada Bulan Juni dua tahun lalu.
+                            </p>
+                            <p align="justify">
+                                Gadis: Tempat ini rasanya panas banget, ya?<br>
+                                Aku: Iya... seperti dikukus, ya?<br>
+                                Gadis: Hah? ...ah, iya. Sepertinya begitu...<br>
+                                Tamat
+                            </p>
+                            <p align="justify">
+                                Seperti itulah contohnya. Yah, dan sejak saat itu ia cuma mau mengobrol dengan perempuan di belakangku saja. Manusia memang cenderung lebih mengingat hal-hal yang tak menyenangkan. Sampai sekarang pun, jika teringat kembali kejadian itu, cepat-cepat saja aku menutup seluruh tubuhku dengan selimut lalu menjerit.
+                            </p>
+                            <p align="justify">
+                                Belum pula selesai ingatan tentang kenangan pahit tersebut, Yukinoshita langsung memberi penjelasan dengan suara lantang,
+                            </p>
+                            <p>"Orang yang sering menawarkan bantuan sebagai bentuk amal bagi mereka yang kekurangan. Ialah yang orang-orang sebut sebagai Sukarelawan. Menyediakan bantuan dalam hal pembinaan bagi negara-negara berkembang; menyediakan makanan bagi para tunawisma; membuat para lelaki yang tak populer agar bisa bercengkerama dengan perempuan; tangan yang selalu terulur bagi mereka yang membutuhkan. Seperti itulah kegiatan klub ini."</p>
+                            <p align="justify">
+                                Tanpa kusadari, Yukinoshita pun telah berdiri dan tentu saja pandangannya tertunduk ke arahku.
+                            </p>
+                            <p>"Selamat datang di Klub Layanan Sosial. Dengan senang hati aku menyambutmu."</p>
+                            <p align="justify">
+                                Tanpa tedeng aling-aling ia berkata demikian di depanku. Perkataannya bahkan sampai membuat mataku berkaca-kaca. Seperti sedang menabur garam pada sebuah luka, yang ia katakan justru membuatku semakin depresi.
+                            </p>
+                            <p>"Sesuai ajaran Bu Hiratsuka, sudah jadi tugas bagi orang yang diberkati untuk menyelamatkan orang yang tak berdaya. Sebagai bentuk tanggung jawabku, akan kupastikan permintaan beliau ini terpenuhi. 'Kan kuperbaiki masalah yang kaualami. Jadi, bersyukurlah."</p>
+                            <p align="justify">
+                                Mungkin yang dimaksudkannya itu&nbsp;<i>Noblesse Oblige</i>, yang dalam Bahasa Perancis berarti wewenang yang dimiliki kaum bangsawan sebagai wujud keluhuran serta kedermawanan. Kenyataannya, meski hanya dinilai dari peringkat kelas serta penampilan luarnya saja, namun tidaklah berlebihan jika Yukinoshita dianggap layaknya seorang bangsawan.
+                            </p>
+                            <p>"Perempuan ini..."</p>
+                            <p align="justify">
+                                Namun sayangnya, sebagai lelaki aku harus membalas perkataannya tadi agar tak menjadi satu-satunya pihak yang dikasihani di sini.
+                            </p>
+                            <p>"Asal kau tahu, ya... mungkin kelihatannya saja begini, tapi sebenarnya aku lumayan berbakat! Aku mendapat peringkat ketiga dalam ujian Bahasa Jepang untuk jurusan IPS tahun ini! Cukup hebat untuk orang dengan tampang sepertiku, 'kan? Jika kau mengenyampingkan fakta tentang diriku yang tak punya teman maupun pacar, standar diriku ini lumayan tinggi, tahu!"</p>
+                            <p>"Aku yakin kalau yang kudengar darimu tadi adalah sebuah kesalahan besar... meski begitu, hal yang luar biasa bila kau sampai bisa sepercaya diri itu. Kau ini memang aneh. Sampai-sampai membuatku jijik."</p>
+                            <p>"Berisik. Aku tak minta pendapat dari perempuan aneh sepertimu."</p>
+                            <p align="justify">
+                                Memang dasar perempuan aneh... atau apalah sebutan yang digosipkan ke dirinya. Dari yang orang bilang, Yukino Yukinoshita memang sangat bertolak belakang dengan yang ia tampakkan di luar. Orang-orang pasti mengira ia hanya seorang gadis jelita yang bersahaja. Padahal kini ia sedang menyunggingkan senyum dingin. Atau jika ada kata yang lebih tepat mendekripsikannya, mungkin sebuah senyum kejam.
+                            </p>
+                            <p>"Hmm... sejauh yang kuamati, terlihat kalau kesendirianmu itu akibat dari pikiran busuk serta sikap menentangmu sendiri."&nbsp;Simpul Yukinoshita dengan begitu cepat.&nbsp;"Pertama-tama, akan kucarikan tempat bagimu di masyarakat. Aku tak bisa meninggalkanmu sendiri dengan ketakberdayaan dirimu itu. Kau tahu? Tempat yang tepat akan menyelamatkanmu dari takdir menyedihkan seperti membakar diri agar berpijar seperti bintang."</p>
+                            <p>"Bintang Yotaka,[13]&nbsp;maksudmu, 'kan? Kolot banget."</p>
+                            <p align="justify">
+                                Kalau saja aku ini bukan orang jenius yang peduli budaya dan mendapat peringkat ketiga dalam ujian Bahasa Jepang, mungkin aku tak tahu cerita apa yang ia singgung. Terlebih, cerita itu memang cerita favoritku, makanya aku bisa ingat. Cerita yang sangat tragis hingga sempat membuatku menangis. Jenis cerita yang mungkin saja bisa dinikmati semua orang.
+                            </p>
+                            <p align="justify">
+                                Mata Yukinoshita terbelalak kaget setelah mendengar jawabku.
+                            </p>
+                            <p>"Sungguh tak disangka... tak pernah kubayangkan jika rata-rata pelajar SMA seperti kau juga membaca karya Kenji Miyazawa."</p>
+                            <p>"Jadi kau menyepelekanku, begitu?"</p>
+                            <p>"Maaf, kalau aku berlebihan. Mungkin lebih tepat jika kubilang di bawah rata-rata?"</p>
+                            <p>"Masa bodoh dengan anggapanmu! Bukannya tadi kubilang kalau aku mendapat peringkat ketiga di tahun ini?"</p>
+                            <p>"Menyedihkan sekali kalau kau bisa merasa sepuas itu hanya karena pernah mendapat peringkat ketiga. Terlebih lagi, menggunakan nilai ujian sebagai satu-satunya acuan justru membuatmu terdengar tak intelek."</p>
+                            <p align="justify">
+                                Merendahkan orang lain juga ada batasnya, tahu. Memperlakukan orang yang baru dikenal seperti memperlakukan ras rendahan. Memangnya aku harus punya pengetahuan setingkat Pangeran Bangsa Saiya baru mau ia akui, begitu?[14]
+                            </p>
+                            <p>"Tahu, tidak? Cerita Bintang Yotaka memang mirip dengan dirimu, kok. Ambil contoh, ya rupa si Yotaka itu."</p>
+                            <p>"Jadi maksudmu wajahku ini cacat...?"</p>
+                            <p>"Aku tak bilang begitu, ya. Aku hanya bilang, kenyataan kadang memang kejam..."</p>
+                            <p>"Itu sama saja!"</p>
+                            <p align="justify">
+                                Di titik ini, Yukinoshita memasang wajah serius sembari menaruh tangannya di bahuku.
+                            </p>
+                            <p>"Jangan lari dari kenyataan. Kalau kau mau lihat yang sebenarnya, bercermin sana."</p>
+                            <p>"Tunggu, tunggu. Bukan bermaksud pamer, tapi bisa dibilang kalau wajahku ini memang lumayan tampan. Adikku juga pernah berkata begitu, meski dengan embel-embel,&nbsp;<i>Itu kalau Kakak sedang diam, sih...</i>&nbsp;tapi itu tandanya, ia mau bilang jika hal menarik di diriku ini, ya tampangku."</p>
+                            <p align="justify">
+                                Adikku memang hebat. Matanya memang jeli... tak seperti kebanyakan perempuan di sekolah ini.
+                            </p>
+                            <p align="justify">
+                                Yukinoshita menempelkan tangan di pelipis wajahnya, layaknya orang yang sedang sakit kepala.
+                            </p>
+                            <p>"Kau ini bodoh, ya? Yang namanya ketampanan itu tak dinilai hanya dari pendapat pribadi. Intinya, karena cuma ada kita berdua saja di ruangan ini, maka pendapatku yang lebih objektif inilah yang paling benar."</p>
+                            <p>"Me-meski agak membingungkan, entah kenapa pendapatmu tadi terasa ada benarnya..."</p>
+                            <p>"Sekarang kita bahas mulai dari kedua matamu, soalnya, masalahmu ini bersumber dari mata yang persis ikan mati itu. Dari situ saja sudah bisa memberi berbagai kesan negatif. Yang kumaksud ini bukanlah ciri wajahmu, melainkan ekspresi wajahmu yang memang sama sekali tak menarik. Itu adalah tanda dari pembawaanmu yang sudah menyimpang."</p>
+                            <p align="justify">
+                                Yukinoshita memasang wajah manis saat ia berbicara, padahal di dalamnya sendiri begitu bertolak belakang. Ekspresi yang ia tampakkan justru lebih seperti seorang penjahat. Nah, siapa yang lebih mirip orang baik-baik sekarang?
+                            </p>
+                            <p align="justify">
+                                ...lagi pula, memangnya mataku ini benar-benar mirip ikan, begitu? Andai aku seorang perempuan, mungkin aku akan berpikir positif dengan bilang,&nbsp;<i>Masa, sih? Kalau begitu aku mirip putri duyung, dong.</i>
+                            </p>
+                            <p align="justify">
+                                Dengan diriku yang masih merenungi hal barusan, Yukinoshita mengibaskan rambutnya ke belakang dan berkata seolah-olah ia telah menang,
+                            </p>
+                            <p>"Pada intinya, merasa percaya diri hanya karena hal-hal sepele semacam peringkat kelas ataupun penampilan fisik, sungguh tidaklah keren. Dan dari yang kusebut tadi masih belum termasuk mata busukmu itu lo, ya."</p>
+                            <p>"Sudah, jangan terus-menerus membahas mataku!"</p>
+                            <p>"Kau benar. Meski aku terus-menerus membahasnya, matamu juga tetap takkan berubah."</p>
+                            <p>"Minta maaf dulu sama orang tuaku sana."</p>
+                            <p align="justify">
+                                Kuakui wajahku menyengir saat mendengar jawabnya. Yukinoshita pun langsung berlagak murung seolah-olah merenungi perkataannya tadi.
+                            </p>
+                            <p>"Benar juga, perkataanku tadi sudah kelewatan. Ini pasti hal berat bagi orang tuamu."</p>
+                            <p>"Sudah-sudah, hentikan!"&nbsp;Aku memohon, dengan mata yang hampir menangis.&nbsp;"Ini memang salahku! Bukan, ini salah wajahku! Puas?"</p>
+                            <p align="justify">
+                                Yukinoshita langsung menghentikan kata-kata pedasnya. Aku pun segera sadar bahwa sia-sia jika berusaha membalas perkataannya. Sejenak, aku terhanyut dalam imajinasi diriku yang bersemedi di bawah pohon Buddha guna mendapat pencerahan. Dan Yukinoshita kembali melanjutkan pembicaraannya.
+                            </p>
+                            <p>"Baiklah, simulasi perbincangan ini telah selesai. Jika kau mampu mengobrol sampai sebanyak ini denganku, maka kau pun mampu berbuat hal yang sama dengan orang lain."&nbsp;Sembari merapikan rambut dengan tangan kanannya, ekspresi wajah Yukinoshita tampak dipenuhi rasa puas. Ia pun tersenyum senang setelahnya.&nbsp;"Mulai sekarang kau bisa menjalani hidup yang lebih baik dengan berbekal kenangan berharga ini, meski itu tanpa bantuan dari siapa-siapa."</p>
+                            <p>"Kau ini sedang berkhayal, ya?"</p>
+                            <p>"Yah, kalau begitu, berarti permintaan Bu Hiratsuka belum terpenuhi... mau tak mau, memang harus memakai pendekatan yang lebih mendasar, seperti... membuatmu berhenti datang ke sekolah."</p>
+                            <p>"Itu namanya bukan solusi, tapi cuma menutup-nutupi bau busuk."[15]</p>
+                            <p>"Wah, jadi kau sudah sadar kalau kau itu busuk?"</p>
+                            <p>"Begitu, ya? Pantas saja selama ini aku dipandang sebelah mata dan dijauhi orang-orang."&nbsp;Tak masalah, sih, lebih baik kuladeni saja perkataannya.</p>
+                            <p>"...dasar payah."</p>
+                            <p align="justify">
+                                Setelah kutertawa kecil karena komentarku yang menyindir tadi, Yukinoshita menatapku seakan hendak berkata,&nbsp;<i>Kenapa juga orang seperti ini masih hidup?</i>&nbsp;Dan seperti yang pernah kubilang, tatapannya memang membunuh.
+                            </p>
+                            <p align="justify">
+                                Lalu keheningan pun mulai menghinggapi ruangan, cukup hening untuk membuat telingaku sakit, mungkin sakit ini karena aku selalu saja membiarkan Yukinoshita berkata seenaknya.
+                            </p>
+                            <p align="justify">
+                                Akan tetapi, keheningan ini mendadak pecah karena suara menggema dari gebrakan pintu yang ditarik paksa oleh seseorang.
+                            </p>
+
+                            <hr>
+                            <center><h3> — II — </h3></center>
+                            <hr>
+
+                            <p>"Yukinoshita. Ibu masuk, ya."</p>
+                            <p>"Tolong kalau Ibu mau masuk, ketuk du—"</p>
+                            <p>"Iya, iya. Jangan diambil hati, lanjutkan saja. Ibu cuma mampir memeriksa keadaan."</p>
+                            <p align="justify">
+                                Bu Hiratsuka menyandarkan badannya ke tembok sambil melemparkan senyum pada Yukinoshita. Lalu beliau pun kembali mengarahkan pandangannya pada kami berdua.
+                            </p>
+                            <p>"Wah, wah, tampaknya kalian sudah akrab."&nbsp;Bisa-bisanya beliau berkesimpulan begitu?&nbsp;"Hikigaya, tetap semangat, ya. Tetap fokus pada program rehabilitasi sikap menentangmu dan juga penyembuhan mata busuk milikmu itu. Ibu mau balik dulu. Jaga diri kalian saat pulang nanti, ya."</p>
+                            <p>"Eh, eh, tunggu dulu!"</p>
+                            <p align="justify">
+                                Spontan kugenggam tangan Bu Hiratsuka agar beliau tak pergi. Namun tiba-tiba—
+                            </p>
+                            <p>"Aduh! Aduh-duh-duh! Ampun! Ampun, Bu, saya menyerah!"</p>
+                            <p align="justify">
+                                Tahu-tahu lenganku sudah terkunci. Setelah meronta-ronta dan memohon ampun, beliau akhirnya melepaskanku.
+                            </p>
+                            <p>"Oh. Rupanya kau toh, Hikigaya. Jangan tiba-tiba berdiri di belakang Ibu, dong... Ibu jadi refleks, deh."</p>
+                            <p>"Memang Ibu ini Golgo, apa?[16]&nbsp;Lagi pula, apanya yang refleks? Jangan langsung tiba-tiba begitu, dong!"</p>
+                            <p>"Bukannya kau yang mulai duluan? ...memangnya ada masalah apa?"</p>
+                            <p>"Ya, Ibu itu sumber masalahnya... terus, apa maksud Ibu dengan&nbsp;<i>program rehabilitasi</i>? Itu malah terdengar seolah-olah saya ini anak bermasalah, ya 'kan? Sebenarnya ini tempat apa, sih?"</p>
+                            <p align="justify">
+                                Bu Hiratsuka memegang dagunya sejenak.
+                            </p>
+                            <p>"Yukinoshita sudah menjelaskannya padamu, 'kan? Intinya, tujuan utama klub ini adalah membantu mengatasi permasalahan seseorang dengan cara mendorongnya agar berkembang. Anggap saja tempat ini seperti Ruang Jiwa dan Waktu.[17]&nbsp;Atau gampangnya, seperti cerita dalam Shoujo Kakumei Utena itu, lo."[18]</p>
+                            <p>"Ilustrasi yang Ibu berikan malah tambah bikin bingung... secara tak langsung malah memberi tahu berapa usia Ibu."</p>
+                            <p>"Kau tadi bilang apa?"</p>
+                            <p>"...eh, bukan apa-apa."</p>
+                            <p align="justify">
+                                Aku langsung mengecilkan suaraku, mencoba menghindar dari tatapan dingin Bu Hiratsuka. Beliau lalu menghela napasnya sembari mengamatiku.
+                            </p>
+                            <p>"Yukinoshita, kelihatannya program rehabilitasimu menemui kesulitan."</p>
+                            <p>"Itu semua karena ia tak sadar kalau pada kenyataannya dirinya sendiri bermasalah."&nbsp;Dengan ketus Yukinoshita menjawab.</p>
+                            <p align="justify">
+                                Rasanya aku tak sanggup berada di tempat ini lebih lama lagi. Ini terasa seperti ketika orang tuaku menemukan koleksi majalah porno milikku sewaktu aku masih kelas 6 SD yang membuat mereka menceramahiku habis-habisan.
+                            </p>
+                            <p align="justify">
+                                Tapi jika kupikir lagi, mungkin ini tak sampai seburuk itu.
+                            </p>
+                            <p>"Maaf, ya... dari tadi kau dan Bu Hiratsuka membahas tentang program rehabilitasi, lalu pengembangan diri, lalu revolusi, lalu gadis revolusioner, lalu apalah lagi itu namanya, padahal tak sekalipun aku pernah meminta hal tersebut..."</p>
+                            <p>"Hmm..."&nbsp;Bu Hiratsuka memiringkan kepalanya karena tak mengerti.</p>
+                            <p>"Kau ini bicara apa?"&nbsp;Tegas Yukinoshita.&nbsp;"Jika kau tak bisa berubah, nantinya kau akan kesulitan dalam bermasyarakat."</p>
+                            <p align="justify">
+                                Tampak dari wajahnya jika pendapat yang ia lontarkan itu seolah menyiratkan hal seperti,&nbsp;<i>Tak ada gunanya berperang, jadi buang semua senjatamu.</i>
+                            </p>
+                            <p>"Sudah terlihat kalau sisi kemanusiaanmu itu benar-benar rendah bila dibandingkan orang lain. Apa kau tak pernah terpikir ingin mengubah sisi tersebut?"</p>
+                            <p>"Bukan begitu... hanya saja, aku tak mau orang lain terus memaksaku agar berubah, memaksaku supaya sadar akan diriku sendiri. Lagi pula, jika akhirnya aku berubah karena nasihat orang lain, maka aku takkan bisa jadi diriku sendiri, ya 'kan?&nbsp;<i>Dikatakan jika sebuah jati diri—</i>"</p>
+                            <p>"Hal tersebut tak bisa dilihat dari pendapat satu orang saja."</p>
+                            <p align="justify">
+                                Usahaku agar terlihat hebat dengan mengutip ucapan Descartes, justru langsung disela oleh Yukinoshita... padahal aku sedang mengatakan hal yang lumayan keren.
+                            </p>
+                            <p>"Yang kaulakukan hanyalah lari dari masalah. Jika kau masih belum berubah, kau takkan bisa maju."</p>
+                            <p align="justify">
+                                Ucapan Yukinoshita terasa sangat menusuk. Kenapa ia harus selalu bersikap kasar begitu? Memangnya orang tuanya itu kepiting, apa?
+                            </p>
+                            <p>"Memangnya kenapa kalau aku lari dari masalah? Kau sendiri dari tadi hanya terus-menerus menyuruhku untuk berubah. Lagi pula, memangnya kau bisa menghadap matahari dan berkata,&nbsp;<i>Hei, Matahari, Kau terlalu lama terbenam di barat dan orang-orang jadi terganggu, jadi mulai sekarang terbenam saja di timur.</i>&nbsp;Begitu?"</p>
+                            <p>"Kau melantur. Tolong jangan menyimpang dari pokok permasalahan. Bukan matahari yang bergerak mengelilingi bumi, melainkan bumi yang bergerak mengelilingi matahari. Kau tak pernah tahu Teori Heliosentris, ya?"[19]</p>
+                            <p>"Itu hanya perumpamaan! Kalau kaubilang aku melantur, berarti ucapanmu selama ini juga melantur, dong. Bila aku akhirnya berubah, berarti sama saja aku lari dari masalah, ya 'kan? Lalu untuk apa kau menyuruhku agar tak lari dari masalah? Kalau memang aku tak berniat mau lari dari masalah, maka aku takkan mengubah diriku yang sekarang. Lagi pula, kenapa kau tak bisa menerima apa adanya diriku ini?"</p>
+                            <p>"Jika seperti itu... maka permasalahan ini tak bisa terselesaikan dan tak seorang pun bisa diselamatkan."</p>
+                            <p align="justify">
+                                Seiring kata-kata yang terlontar dari mulut Yukinoshita, ekspresi wajah yang ia tampakkan sudah seperti orang yang sedang naik pitam. Tak sengaja diriku tersentak. Mungkin saja aku sudah siap meminta maaf dan langsung berkata,&nbsp;<i>Ma-ma-ma-maaf, ya!</i>. Bicara soal itu, yang ia katakan tadi bukanlah hal yang biasa dibicarakan oleh murid-murid SMA. Aku hanya tak mengerti alasan ia berbuat sampai sejauh ini.
+                            </p>
+                            <p>"Kalian berdua tenanglah dulu."&nbsp;Suara Bu Hiratsuka mulai menenangkan suasana, atau sebaliknya, malah membuat suasana jadi lebih tak mengenakkan. Bahkan beliau sekilas menyengir menampakkan harapan dan kegembiraannya.</p>
+                            <p>"Hal ini mulai semakin menarik. Ibu suka perkembangan yang seperti ini. Terasa&nbsp;<i>JUMP</i>&nbsp;banget deh. Ya 'kan?"[20]</p>
+                            <p align="justify">
+                                Entah kenapa hanya Bu Hiratsuka saja yang merasa antusias. Daripada disebut sebagai wanita dewasa, tatapan beliau lebih seperti seorang anak kecil.
+                            </p>
+                            <p>"Sejak zaman dahulu kala, ketika dua pihak saling beradu mengatasnamakan keadilan, maka dalam&nbsp;<i>shounen manga</i>&nbsp;mereka akan menyelesaikan permasalahannya itu dengan cara bertanding."</p>
+                            <p>"Tapi kita&nbsp;<i>kan</i>&nbsp;tak sedang di dalam&nbsp;<i>shounen manga</i>..."&nbsp;Tak ada yang memerhatikanku bicara.</p>
+                            <p align="justify">
+                                Beliau pun tertawa sembari mengalihkan pandangannya ke arahku dan Yukinoshita, kemudian memberi pengumuman dengan suara keras.
+                            </p>
+                            <p>"Baiklah, begini saja. Mulai sekarang, Ibu akan menggiring domba-domba tersesat untuk datang ke klub ini, di mana kesemuanya itu akan berada dalam pengawasan Ibu. Tugas kalian adalah berusaha menolong mereka dengan cara kalian sendiri. Dengan begini, kalian bisa segenap hati membuktikan kebenaran yang kalian yakini itu kepada orang-orang. Jadi, kira-kira siapakah yang bisa menolong mereka?! Gundam Fight.&nbsp;<i>Ready</i>&nbsp;—&nbsp;<i>Go!</i>"[21]</p>
+                            <p>"Saya menolak."&nbsp;Jawab Yukinoshita dengan nada ketus.</p>
+                            <p align="justify">
+                                Tampak di matanya sebuah tatapan dingin yang sempat ia tujukan padaku barusan. Yah, aku pun setuju dengannya, makanya aku menganggukkan kepala. Lagi pula, serial G Gundam juga bukan dari generasi kami.
+                            </p>
+                            <p align="justify">
+                                Bu Hiratsuka melihat keengganan kami dan menggigit kukunya karena frustasi.
+                            </p>
+                            <p>"Cih. Mungkin bisa lebih gampang dipahami jika ini Robattle..."[22]</p>
+                            <p>"Bukan itu masalahnya..."</p>
+                            <p align="justify">
+                                Hal seperti Medabots itu sudah terlalu&nbsp;<i>mainstream</i>...
+                            </p>
+                            <p>"Maaf, Bu. Tolong jangan bertingkah terlalu kekanak-kanakan. Hal itu tak pantas untuk orang seumuran Ibu dan itu juga sangat memalukan."</p>
+                            <p align="justify">
+                                Kata-kata menusuk yang terlontar dari mulut Yukinoshita bagaikan paku-paku es yang tajam. Tak begitu jelas apakah Bu Hiratsuka mulai berangsur tenang, yang pasti wajah beliau langsung memerah karena malu. Beliau lalu berdeham untuk menutupi rasa malunya.
+                            </p>
+                            <p>"Po-pokoknya, cara untuk membuktikan kebenaran yang kalian yakini yaitu dengan tindakan kalian sendiri! Jika Ibu suruh kalian bertanding, maka harus kalian turuti. Kalian tak punya hak untuk menolak."</p>
+                            <p>"Itu terlalu otoriter..."</p>
+                            <p align="justify">
+                                Beliau memang seperti anak kecil! Bagian yang tampak dewasa di dirinya hanya payudaranya saja. Yah, jika itu adalah hal konyol seperti bertanding, maka dengan senang hati aku akan mengalah. Lagi pula, hanya mendapat bintang jasa untuk kerja kerasku bukanlah hal yang buruk... cukup naif dan berlebihan jika beranggapan bahwa ada maksud tersendiri mengenai keikutsertaan dalam pertandingan ini.
+                            </p>
+                            <p align="justify">
+                                Meski begitu, komentar konyol bertemakan&nbsp;<i>shounen manga</i>&nbsp;masih saja dimuntahkan oleh wanita kekanak-kanakan ini.
+                            </p>
+                            <p>"Agar pertandingan kalian tak terasa sia-sia, akan Ibu beri sesuatu yang bisa menambah motivasi kalian. Bagaimana kalau begini? Pihak yang menang boleh menyuruh pihak yang kalah untuk melakukan apa saja keinginannya."</p>
+                            <p>"Apa saja, ya!?"</p>
+                            <p align="justify">
+                                <i>Apa saja</i>&nbsp;itu, maksudnya apa saja boleh, 'kan? Jangan-jangan yang&nbsp;<i>begituan</i>&nbsp;juga boleh, ya?&nbsp;<i>Glek.</i>
+                            </p>
+                            <p align="justify">
+                                Mendadak kudengar suara kursi yang terdorong ke belakang. Yukinoshita sudah mundur dua meter, menutupi tubuhnya dengan kedua tangan dalam posisi melindungi diri.
+                            </p>
+                            <p>"Saya menolak. Saya merasa jika bertanding dengan anak ini bisa membahayakan kesucian saya."</p>
+                            <p>"Itu cuma prasangkamu! Tak semua anak kelas dua SMA khususnya laki-laki selalu berpikir ke arah sana!"</p>
+                            <p align="justify">
+                                Masih banyak hal lain, contohnya... oh, iya! Perdamaian dunia, mungkin? Atau hal-hal semacamnya, begitu? Yah, setidaknya itulah yang kupikirkan.
+                            </p>
+                            <p>"Wah, wah. Bahkan seorang Yukino Yukinoshita pun bisa merasa takut... apa kau tak yakin bisa menang?"&nbsp;Bu Hiratsuka mengatakannya dengan tampang mengejek. Yukinoshita terlihat sedikit tersinggung.</p>
+                            <p>"...baiklah. Meski provokasi murahan itu terasa mengganggu, tapi akan saya terima. Kalau ada apa-apa, saya juga bisa menyerahkan segala urusan anak ini kepada Ibu."</p>
+                            <p align="justify">
+                                Wuih... bicara soal pecundang yang tersakiti. Rupanya Yukinoshita orang yang benci terhadap kekalahan, seolah ia berkata,&nbsp;<i>Aku tahu apa niatmu sesungguhnya</i>, namun ia masih saja mau mengikutinya. Lalu, apa maksudnya ia berkata&nbsp;<i>Menyerahkan segala urusan</i>? Sudahlah, tak usah selalu bersikap sekejam itu.
+                            </p>
+                            <p>"Kalau begitu, sudah diputuskan."&nbsp;Bu Hiratsuka menyengir tanpa menghiraukan tatapan Yukinoshita.</p>
+                            <p>"Tunggu, saya&nbsp;<i>kan</i>&nbsp;belum bilang setuju..."&nbsp;Aku menyela.</p>
+                            <p>"Tak ada gunanya meminta pendapatmu, dan tak ada juga yang memintamu menyengir."&nbsp;Balas Yukinoshita.</p>
+                            <p align="justify">
+                                Ya sudah...
+                            </p>
+                            <p>"Ibulah yang menentukan siapa yang berhak menang. Keputusan yang Ibu ambil tentunya didasari penilaian Ibu sendiri, tapi kalian jangan cemas... lakukan saja cara kalian itu dengan patut dan wajar, lalu berikanlah yang terbaik."</p>
+                            <p align="justify">
+                                Setelah berkata demikian beliau pun lalu pergi, meninggalkan kesan tak menyenangkan pada diriku serta Yukinoshita.
+                            </p>
+                            <p align="justify">
+                                Tentunya, setelah itu ruangan menjadi sepi dan tak ada perbincangan lagi di antara kami. Suasana hening ini lalu sirna oleh suara dari siaran radio sekolah. Bunyi bel tiruan mulai bergema. Seiring dengan melodi yang berangsur tersamar, Yukinoshita langsung menutup buku bacaannya. Bunyi bel barusan pasti pertanda berakhirnya kegiatan sekolah.
+                            </p>
+                            <p align="justify">
+                                Bersamaan dengan bunyi itu, Yukinoshita segera bersiap untuk pergi. Dengan hati-hati ia memasukkan buku bacaannya ke dalam tas. Ia sekilas memandang ke arahku. Tanpa mengucapkan&nbsp;<i>Sampai jumpa</i>&nbsp;atau&nbsp;<i>Sampai ketemu lagi</i>, ia pergi begitu saja. Aku pun tak punya kesempatan untuk membalas sikap dinginnya.
+                            </p>
+                            <p align="justify">
+                                Dan sekarang, tinggal diriku sendiri yang ada di ruangan ini. Apa hari ini memang hari sialku, ya? Dipanggil ke ruang guru, dipaksa bergabung ke klub misterius, dikata-katai oleh gadis yang hanya cantik di luarnya saja... Yang tertinggal di sini hanyalah diriku yang terluka parah secara mental.
+                            </p>
+                            <p align="justify">
+                                Bukankah hati kita akan berdegup kencang bila sedang bicara dengan seorang gadis? Tapi yang terjadi, ia justru membuat hatiku tenggelam dalam keputus-asaan.
+                            </p>
+                            <p align="justify">
+                                Jika terus begini, lebih baik aku bicara dengan hewan peliharaan saja. Hewan peliharaan takkan pernah membantah dan selalu tersenyum pada majikannya. Kenapa aku tak terlahir menjadi seorang masokis saja, ya?[23]
+                            </p>
+                            <p align="justify">
+                                Dan di atas semua itu, kenapa aku dipaksa ikut dalam pertandingan yang tak ada gunanya ini? Jika Yukinoshita yang jadi lawanku, kurasa aku juga takkan bisa menang. Jangan-jangan pertandingan tadi itu salah satu kegiatan klub. Saat berpikir tentang kegiatan klub, yang kubayangkan justru sekumpulan gadis-gadis yang membentuk sebuah grup band, seperti cerita dalam DVD yang pernah kutonton.[24]&nbsp;Kalau kegiatan yang seperti itu, sih, menurutku masih masuk akal.
+                            </p>
+                            <p align="justify">
+                                Tapi jika ceritanya berlanjut seperti ini, bagaimana kami bisa akur?&nbsp;<i>Boro-boro, deh.</i>&nbsp;Mungkin bisa saja ia dengan santai menyuruhku sambil berkata,&nbsp;<i>Napasmu bau, jadi bisa tidak, jangan bernapas dulu sampai tiga jam ke depan?</i>
+                            </p>
+                            <p align="justify">
+                                Sudah kuduga, masa remaja tak lain hanyalah sebuah kebohongan.
+                            </p>
+                            <p align="justify">
+                                Setelah kalah dalam turnamen bisbol di tahun ketiga, mereka menitikkan air matanya supaya bisa terlihat keren. Setelah gagal di ujian masuk perguruan tinggi, mereka bersikukuh menganggap bahwa kegagalan hanyalah bagian dari pengalaman hidup. Setelah ditolak saat menyatakan cinta pada orang yang disukai, mereka menipu diri sendiri dan berpura-pura lugu dengan berkata kalau mereka rela asal itu demi kebahagiaan orang tersebut.
+                            </p>
+                            <p align="justify">
+                                Lalu ada juga yang begini: Sesuatu yang ditunggu-tunggu seperti kisah komedi romantis dengan gadis&nbsp;<i>tsundere</i>[25]&nbsp;yang tak ramah dan menjengkelkan, ternyata takkan pernah terjadi. Aku pun tak yakin jika esaiku ini perlu diperbaiki.
+                            </p>
+
+                    <p><b>Sudah kuduga, masa remaja hanyalah omong kosong, penipuan, dan penuh kecurangan.</b></p>
+
+                    <p>
+                        <b>RIAJUU, MELEDAK SAJA KAU SANA.</b>
+                    </p>
+
+                    <hr>
+                    <pre>
+KUTIPAN
+
+- "Jika masa remaja adalah sesuatu yang indah, mengapa ada begitu banyak luka yang tersisa darinya?"
+
+- "Masa remaja adalah mimpi indah bagi sebagian orang, namun bagi yang lain, ia tak lebih dari mimpi 
+  buruk yang tak pernah berakhir."
+
+- "Masa remaja hanyalah fase di mana seseorang belajar menerima kenyataan bahwa dunia tidak seindah 
+  yang mereka bayangkan."
+                    </pre>
+                </div>
+
+                <div class="w3-row-padding w3-margin-top w3-center chapter-nav-buttons">
+                    <div class="w3-third">
+                        <a href="../../index.html" class="w3-button w3-blue w3-round w3-padding-large w3-block">HOME</a>
+                    </div>
+                    <div class="w3-third">
+                        <a href="prolog.html" class="w3-button w3-red w3-round w3-padding-large w3-block">KEMBALI</a>
+                    </div>
+                    <div class="w3-third">
+                        <a href="chp2.html" class="w3-button w3-green w3-round w3-padding-large w3-block">SELANJUTNYA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="w3-container w3-dark-grey w3-padding-32 w3-center w3-opacity w3-hover-opacity-off" id="contact">
+        <h3 class="w3-xlarge">Hubungi Kami</h3>
+        <p>Ikuti kami di sosial media atau hubungi via email/WhatsApp.</p>
+        <p>Email: <a href="aryarn1560@gmail.com" class="w3-hover-text-blue">aryarn1560@gmail.com</a></p>
+        <p>Telepon: <a href="tel:+6283177754533" class="w3-hover-text-blue">+62 831 7775 4533</a></p>
+        
+        <div class="w3-margin-top social-icons">
+            <a href="https://wa.me/6283177754533" target="_blank" class="w3-button w3-blue w3-round"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/kambeng79/" target="_blank" class="w3-button w3-pink w3-round w3-margin-left"><i class="fa fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/yaharinovel" target="_blank" class="w3-button w3-blue w3-round w3-margin-left"><i class="fa fa-facebook-official"></i> Facebook</a>
+        </div>
+
+        <div class="w3-margin-top w3-small">
+            <p>&copy; 2024 Novel Yahari. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <button onclick="scrollToTop()" id="myBtn" title="Kembali ke atas" class="w3-button w3-circle w3-indigo w3-large w3-card-4">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Dapatkan elemen tombol dengan ID 'myBtn'
+        let mybutton = document.getElementById("myBtn");
+
+        // Ketika pengguna menggulir halaman, panggil fungsi scrollFunction
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            // Jika posisi gulir vertikal tubuh dokumen (atau elemen akar) lebih dari 20px, tampilkan tombol
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block"; // Menampilkan tombol
+            } else {
+                mybutton.style.display = "none"; // Menyembunyikan tombol
+            }
+        }
+
+        // Ketika pengguna mengklik tombol, gulir halaman ke bagian paling atas
+        function scrollToTop() {
+            document.body.scrollTop = 0; // Untuk browser Safari
+            document.documentElement.scrollTop = 0; // Untuk Chrome, Firefox, IE, dan Opera
+        }
+
+        // Fungsi untuk menu mobile di header
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+
+</body>
+</html>

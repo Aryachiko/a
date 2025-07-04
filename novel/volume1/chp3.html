@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yahari Novel - Chapter 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body { font-family: sans-serif; }
+        /* Padding atas untuk header fixed, agar konten tidak tertutup */
+        .page-content-wrapper {
+            padding-top: 64px; /* Sesuaikan dengan tinggi header */
+            padding-bottom: 32px; /* Padding bawah untuk footer */
+        }
+        .chapter-main-content {
+            line-height: 1.8;
+            font-size: 1.1em;
+            padding: 20px;
+        }
+        .chapter-nav-buttons .w3-button {
+            margin: 5px;
+        }
+        /* Style for the iframe */
+        #chapterFrame {
+            width: 100%;
+            height: 800px; /* Adjust height as needed, or use JavaScript to dynamically set it */
+            border: none; /* Remove iframe border */
+            /* Add some margin to separate it from the navigation buttons */
+            margin-bottom: 20px;
+        }
+
+        /* Styling untuk sidebar */
+        .sidebar {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .sidebar .w3-bar-block .w3-bar-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+            /* Ensure text wraps on smaller screens */
+            white-space: normal;
+        }
+        .sidebar .w3-bar-block .w3-bar-item.w3-button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .sidebar .w3-bar-block .w3-bar-item.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        /* Styling untuk gambar ilustrasi di dalam chapter */
+        .chapter-illustration {
+            display: block; /* Agar bisa diatur margin auto untuk tengah */
+            margin: 0px auto 20px auto; /* Atas 0, samping auto untuk tengah, bawah 20px */
+            max-width: 100%; /* Pastikan gambar tidak melebihi lebar kontainer */
+            height: auto; /* Jaga rasio aspek */
+            border-radius: 8px; /* Sudut sedikit membulat */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sedikit bayangan */
+        }
+
+        /* Scroll to top button styles */
+        #myBtn {
+            display: none; /* Tersembunyi secara default */
+            position: fixed; /* Posisi tetap/melekat */
+            bottom: 20px; /* Tempatkan tombol di bagian bawah halaman */
+            right: 20px; /* Adjust right for better mobile spacing */
+            z-index: 99; /* Pastikan tidak tumpang tindih */
+            border: none; /* Hapus border */
+            outline: none; /* Hapus outline */
+            background-color: #007bff; /* Atur warna latar belakang */
+            color: white; /* Warna teks */
+            cursor: pointer; /* Tambahkan kursor penunjuk saat diarahkan */
+            padding: 12px 15px; /* Adjust padding for mobile button size */
+            border-radius: 50%; /* Sudut membulat */
+            font-size: 1.2em; /* Perbesar ukuran font relatif */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adjust shadow for mobile */
+            transition: background-color 0.3s ease;
+        }
+
+        #myBtn:hover {
+            background-color: #0056b3; /* Tambahkan latar belakang abu-abu gelap saat diarahkan */
+        }
+
+        /* Mobile-specific adjustments for header */
+        @media (max-width: 600px) {
+            .w3-top .w3-bar-item {
+                font-size: 1.2em !important; /* Smaller font for main title on small screens */
+            }
+            .w3-top .w3-right.w3-hide-small {
+                display: none; /* Hide desktop menu on small screens */
+            }
+            .page-content-wrapper {
+                padding-top: 50px; /* Adjust padding for potentially smaller mobile header */
+            }
+            .sidebar {
+                padding: 10px; /* Less padding on mobile sidebar */
+            }
+            .sidebar .w3-bar-block .w3-bar-item {
+                padding: 8px 10px; /* Smaller padding for sidebar links on mobile */
+            }
+            .chapter-main-content {
+                padding: 15px; /* Slightly less padding for content on mobile */
+            }
+            .chapter-nav-buttons .w3-half,
+            .chapter-nav-buttons .w3-third {
+                width: 100%; /* Make navigation buttons full width on small screens */
+                margin-bottom: 10px; /* Add space between buttons */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-top w3-bar w3-dark-grey w3-card-4">
+        <div class="w3-container">
+            <a href="../../index.html" class="w3-bar-item w3-button w3-mobile w3-large w3-hide-small w3-hover-none w3-hover-text-light-grey">Novel Yahari</a>
+            <div class="w3-right w3-hide-small">
+                <a href="../../index.html" class="w3-bar-item w3-button w3-mobile" title="Lihat semua volume novel">Home</a>
+                <a href="../../profil.html" class="w3-bar-item w3-button w3-mobile" title="Informasi tentang pencipta web">Profil</a>
+                <a href="../../karakter.html" class="w3-bar-item w3-button w3-mobile" title="Penjelasan karakter novel">Karakter</a>
+                <a href="../../ost.html" class="w3-bar-item w3-button w3-mobile" title="Original Soundtrack anime">OST</a>
+                <a href="../../pengunjung.html" class="w3-bar-item w3-button w3-mobile" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-mobile" title="Kontak pencipta web">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="w3-container w3-white w3-card-4 w3-margin page-content-wrapper">
+        <div class="w3-row">
+            <div class="w3-col l3 m4 s12 sidebar">
+                <h3>DAFTAR ISI</h3>
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">Volume 1</h4>
+                <div class="w3-bar-block">
+                    <a href="javascript:void(0)" onclick="loadChapter('prolog.html', this)" class="w3-bar-item w3-button">Prolog</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp1.html', this)" class="w3-bar-item w3-button">Chapter 1: Biar Bagaimanapun, Hachiman Hikigaya Memang Busuk</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp2.html', this)" class="w3-bar-item w3-button">Chapter 2: Sampai Kapan pun, Yukino Yukinoshita Tetap Keras Kepala</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('https://www.baka-tsuki.org/project/index.php?title=Oregairu_(Indonesia):Jilid_1_Bab_3', this)" class="w3-bar-item w3-button active">Chapter 3: Berulang Kali, Yui Yuigahama Bersikap Gelisah</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp4.html', this)" class="w3-bar-item w3-button">Chapter 4: Meski Begitu, Kelas Berjalan Seperti Biasanya</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp5.html', this)" class="w3-bar-item w3-button">Chapter 5: Intinya, Yoshiteru Zaimokuza itu Agak Gila</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp6.html', this)" class="w3-bar-item w3-button">Chapter 6: Akan Tetapi, Saika Totsuka Mau Saja Menurut</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp7.html', this)" class="w3-bar-item w3-button">Chapter 7: Terkadang Dewa Komedi Romantis Bisa Berbuat Hal Baik</a>
+                    <a href="javascript:void(0)" onclick="loadChapter('chp8.html', this)" class="w3-bar-item w3-button">Chapter 8: Kemudian Hikigaya Hachiman Berpikir</a>
+                </div>
+
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">
+                    <a href="volume2.html" class="w3-bar-item w3-button w3-block w3-left-align w3-text-grey w3-hover-text-blue" style="padding-left: 0; padding-right: 0;">Volume 2</a>
+                </h4>
+
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">
+                    <a href="volume3.html" class="w3-bar-item w3-button w3-block w3-left-align w3-text-grey w3-hover-text-blue" style="padding-left: 0; padding-right: 0;">Volume 3</a>
+                </h4>
+
+                <img src="../../gambar/YahariLoveCom_v01_thumb_cover.jpg" alt="Ilustrasi Chapter 1" class="w3-image chapter-illustration">
+            </div>
+
+            <div class="w3-col l9 m8 s12 chapter-main-content">
+                <iframe id="chapterFrame" src="chp3.html" allowfullscreen></iframe>
+                
+                <div class="w3-row-padding w3-margin-top w3-center chapter-nav-buttons">
+                    <div class="w3-third">
+                        <a href="../../index.html" class="w3-button w3-blue w3-round w3-padding-large w3-block">HOME</a>
+                    </div>
+                    <div class="w3-third">
+                        <a href="javascript:void(0)" onclick="loadChapter('chp2.html', this)" class="w3-button w3-red w3-round w3-padding-large w3-block">KEMBALI</a>
+                    </div>
+                    <div class="w3-third">
+                        <a href="javascript:void(0)" onclick="loadChapter('chp4.html', this)" class="w3-button w3-green w3-round w3-padding-large w3-block">SELANJUTNYA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="scrollToTop()" id="myBtn" title="Kembali ke atas">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <footer class="w3-container w3-dark-grey w3-padding-32 w3-center w3-opacity w3-hover-opacity-off" id="contact">
+        <h3 class="w3-xlarge">Hubungi Kami</h3>
+        <p>Ikuti kami di sosial media atau hubungi via email/WhatsApp.</p>
+        <p>Email: <a href="aryarn1560@gmail.com" class="w3-hover-text-blue">aryarn1560@gmail.com</a></p>
+        <p>Telepon: <a href="tel:+6283177754533" class="w3-hover-text-blue">+62 831 7775 4533</a></p>
+        
+        <div class="w3-margin-top social-icons">
+            <a href="https://wa.me/6283177754533" target="_blank" class="w3-button w3-blue w3-round"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/kambeng79/" target="_blank" class="w3-button w3-pink w3-round w3-margin-left"><i class="fa fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/yaharinovel" target="_blank" class="w3-button w3-blue w3-round w3-margin-left"><i class="fa fa-facebook-official"></i> Facebook</a>
+        </div>
+
+        <div class="w3-margin-top w3-small">
+            <p>&copy; 2024 Novel Yahari. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Get the iframe element
+        const chapterFrame = document.getElementById('chapterFrame');
+
+        // Function to load content into the iframe
+        function loadChapter(url, clickedElement) {
+            // Set the iframe's src to the provided URL
+            chapterFrame.src = url;
+
+            // Remove 'active' class from all sidebar items
+            const sidebarItems = document.querySelectorAll('.sidebar .w3-bar-item');
+            sidebarItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked item
+            if (clickedElement) {
+                clickedElement.classList.add('active');
+            }
+
+            // Scroll to the top of the page after loading a new chapter
+            scrollToTop();
+        }
+
+        // Dapatkan elemen tombol dengan ID 'myBtn'
+        let mybutton = document.getElementById("myBtn");
+
+        // Ketika pengguna menggulir halaman, panggil fungsi scrollFunction
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            // Jika posisi gulir vertikal tubuh dokumen (atau elemen akar) lebih dari 20px, tampilkan tombol
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block"; // Menampilkan tombol
+            } else {
+                mybutton.style.display = "none"; // Menyembunyikan tombol
+            }
+        }
+
+        // Ketika pengguna mengklik tombol, gulir halaman ke bagian paling atas
+        function scrollToTop() {
+            document.body.scrollTop = 0; // Untuk browser Safari
+            document.documentElement.scrollTop = 0; // Untuk Chrome, Firefox, IE, dan Opera
+        }
+
+        // Call loadChapter on page load to set the initial chapter
+        // This will load the chapter marked as 'active' when the page first loads.
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeChapterLink = document.querySelector('.sidebar .w3-bar-item.active');
+            if (activeChapterLink) {
+                const urlMatch = activeChapterLink.getAttribute('onclick').match(/'([^']+)'/);
+                if (urlMatch && urlMatch[1]) {
+                    loadChapter(urlMatch[1], activeChapterLink);
+                }
+            } else {
+                // Fallback: If no active link, load a default (e.g., prolog.html or chp1.html)
+                loadChapter('prolog.html'); 
+            }
+        });
+    </script>
+
+</body>
+</html>

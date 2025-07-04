@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yahari Novel - Prolog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body { font-family: sans-serif; }
+        /* Padding atas untuk header fixed, agar konten tidak tertutup */
+        .page-content-wrapper {
+            padding-top: 64px; /* Sesuaikan dengan tinggi header */
+            padding-bottom: 32px; /* Padding bawah untuk footer */
+        }
+        .chapter-main-content {
+            line-height: 1.8;
+            font-size: 1.1em;
+            padding: 20px;
+        }
+        .chapter-nav-buttons .w3-button {
+            margin: 5px;
+        }
+        /* Style untuk konten asli yang diambil dari file prolog.html sebelumnya */
+        .original-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            /* FIX 1: Pastikan tabel bisa di-scroll horizontal di mobile jika terlalu lebar */
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Untuk smooth scrolling di iOS */
+        }
+        .original-content td {
+            padding: 15px;
+            border: 1px solid #ccc;
+        }
+        .original-content pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 5px solid #007bff;
+            margin: 20px 0;
+            /* FIX 2: Pastikan teks di <pre> tidak menyebabkan scroll horizontal jika terlalu panjang */
+            overflow-x: auto; /* Memungkinkan scroll jika ada baris yang sangat panjang */
+        }
+        .original-content hr {
+            margin: 20px 0;
+            border-top: 1px solid #eee;
+        }
+        /* Styling untuk sidebar */
+        .sidebar {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .sidebar .w3-bar-block .w3-bar-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+            /* FIX 3: Pastikan teks di sidebar link melipat baris di mobile jika terlalu panjang */
+            white-space: normal;
+        }
+        .sidebar .w3-bar-block .w3-bar-item.w3-button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .sidebar .w3-bar-block .w3-bar-item.active {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        /* Styling untuk gambar ilustrasi di dalam chapter */
+        .chapter-illustration {
+            display: block; /* Agar bisa diatur margin auto untuk tengah */
+            margin: 0px auto 20px auto; /* Atas 0, samping auto untuk tengah, bawah 20px */
+            max-width: 100%; /* Pastikan gambar tidak melebihi lebar kontainer */
+            height: auto; /* Jaga rasio aspek */
+            border-radius: 8px; /* Sudut sedikit membulat */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sedikit bayangan */
+        }
+
+        /* Style for the scroll to top button */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #007bff; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3; /* Darker background on hover */
+        }
+
+        /* MEDIA QUERIES UNTUK MOBILE - Ini bagian utama penyesuaian */
+        @media (max-width: 600px) { /* Batas umum untuk perangkat mobile */
+            .page-content-wrapper {
+                padding-left: 10px; /* Kurangi padding samping di mobile */
+                padding-right: 10px; /* Kurangi padding samping di mobile */
+                margin: 0; /* Hapus margin horizontal di layar sangat kecil */
+            }
+            .chapter-main-content {
+                padding: 15px 10px; /* Sesuaikan padding konten utama untuk layar sempit */
+            }
+            .sidebar {
+                padding: 15px 10px; /* Sesuaikan padding sidebar untuk layar sempit */
+            }
+            .chapter-nav-buttons .w3-half {
+                width: 100%; /* FIX 5: Jadikan tombol navigasi full width di mobile */
+                margin-bottom: 10px; /* Tambah spasi antar tombol yang menumpuk */
+            }
+            .chapter-nav-buttons .w3-button {
+                padding: 12px; /* Tingkatkan padding tombol agar lebih mudah disentuh */
+            }
+            .social-icons .w3-button {
+                width: 100%; /* FIX 6: Jadikan tombol sosial media full width di mobile */
+                margin-left: 0 !important; /* Hapus margin kiri agar tombol menumpuk rapi */
+                margin-bottom: 10px; /* Tambah spasi antar tombol */
+            }
+            /* FIX 7: Sesuaikan tata letak paragraf untuk keterbacaan di mobile */
+            .original-content p[align="justify"],
+            .original-content p[align="center"],
+            .original-content p[align="left"] {
+                text-align: left !important; /* Rata kiri untuk semua paragraf di mobile demi keterbacaan */
+            }
+            .original-content h1.w3-center {
+                font-size: 1.8em; /* Sedikit kecilkan judul utama di mobile */
+            }
+            #scrollToTopBtn {
+                right: 15px; /* Sesuaikan posisi tombol scroll ke atas */
+                padding: 12px; /* Sedikit kecilkan tombol scroll ke atas */
+                font-size: 1.1em;
+            }
+            /* Menyesuaikan judul navbar di mobile agar tidak terlalu besar */
+            .w3-top .w3-bar-item.w3-large {
+                font-size: 1.4em !important;
+                padding: 8px 16px; /* Sesuaikan padding agar tidak terlalu tinggi */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-top w3-bar w3-dark-grey w3-card-4">
+        <div class="w3-container">
+            <a href="../../index.html" class="w3-bar-item w3-button w3-mobile w3-large w3-hover-none w3-hover-text-light-grey">Novel Yahari</a>
+            <div class="w3-right w3-hide-small">
+                <a href="../../index.html" class="w3-bar-item w3-button w3-mobile" title="Lihat semua volume novel">Home</a>
+                <a href="../../profil.html" class="w3-bar-item w3-button w3-mobile" title="Informasi tentang pencipta web">Profil</a>
+                <a href="../../karakter.html" class="w3-bar-item w3-button w3-mobile" title="Penjelasan karakter novel">Karakter</a>
+                <a href="../../ost.html" class="w3-bar-item w3-button w3-mobile" title="Original Soundtrack anime">OST</a>
+                <a href="../../pengunjung.html" class="w3-bar-item w3-button w3-mobile" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-mobile" title="Kontak pencipta web">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="w3-container w3-white w3-card-4 w3-margin page-content-wrapper">
+        <div class="w3-row">
+            <div class="w3-col l3 m4 s12 sidebar">
+                <h3>DAFTAR ISI</h3>
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">Volume 1</h4>
+                <div class="w3-bar-block">
+                    <a href="prolog.html" class="w3-bar-item w3-button active">Prolog</a>
+                    <a href="chp1.html" class="w3-bar-item w3-button">Chapter 1: Biar Bagaimanapun, Hachiman Hikigaya Memang Busuk</a>
+                    <a href="chp2.html" class="w3-bar-item w3-button">Chapter 2: Sampai Kapan pun, Yukino Yukinoshita Tetap Keras Kepala</a>
+                    <a href="chp3.html" class="w3-bar-item w3-button">Chapter 3: Berulang Kali, Yui Yuigahama Bersikap Gelisah</a>
+                    <a href="chp4.html" class="w3-bar-item w3-button">Chapter 4: Meski Begitu, Kelas Berjalan Seperti Biasanya</a>
+                    <a href="chp5.html" class="w3-bar-item w3-button">Chapter 5: Intinya, Yoshiteru Zaimokuza itu Agak Gila</a>
+                    <a href="chp6.html" class="w3-bar-item w3-button">Chapter 6: Akan Tetapi, Saika Totsuka Mau Saja Menurut</a>
+                    <a href="chp7.html" class="w3-bar-item w3-button">Chapter 7: Terkadang Dewa Komedi Romantis Bisa Berbuat Hal Baik</a>
+                    <a href="chp8.html" class="w3-bar-item w3-button">Chapter 8: Kemudian Hikigaya Hachiman Berpikir</a>
+                </div>
+
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">
+                    <a href="volume2.html" class="w3-bar-item w3-button w3-block w3-left-align w3-text-grey w3-hover-text-blue" style="padding-left: 0; padding-right: 0;">Volume 2</a>
+                </h4>
+
+                <h4 class="w3-margin-top w3-border-bottom w3-padding-small">
+                    <a href="volume3.html" class="w3-bar-item w3-button w3-block w3-left-align w3-text-grey w3-hover-text-blue" style="padding-left: 0; padding-right: 0;">Volume 3</a>
+                </h4>
+                
+                <img src="../../gambar/YahariLoveCom_v01_thumb_cover.jpg" alt="Ilustrasi Chapter 1" class="w3-image chapter-illustration">
+            </div>
+
+            <div class="w3-col l9 m8 s12 chapter-main-content">
+                
+                <div class="original-content">
+                    <h1 class="w3-center">Yahari Ore no Seishun Love Come wa Machigatteiru - Prolog</h1>
+                    <hr>
+                    <p align="center">"Menilik Kembali Masa-Masa di SMA"</p>
+                    <p align="left">Karya Hachiman Hikigaya, Kelas 2-F</p>
+
+                    <hr>
+
+                    <p>Masa remaja tak lain hanyalah sebuah kebohongan — sesuatu yang jahat.</p>
+                    <p align="justify">
+                        Mereka yang terpersona olehnya senantiasa tertipu oleh diri mereka sendiri maupun orang-orang di sekitarnya. Mereka membenamkan diri mereka ke dalam keramaian, lalu berkubang dalam 'pengakuan' orang lain. Bahkan parahnya sebuah kegagalan atau hal semacamnya, justru dianggap sebagai salah satu 'penanda' dari masa remaja — yang seluruhnya membekas ke dalam lembar kenangan masing-masing dari mereka.
+                    </p>
+                    <p> Salah satu dari sekian contoh.</p>
+                    <p align="justify">
+                        Kegiatan yang terkait dengan masa remaja, sebut saja, tindak kriminal seperti mengutil ataupun tawuran, hanya akan dicap sebagai 'kenakalan remaja'.
+                    </p>
+                    <p align="justify">
+                        Kegagalan yang mereka alami saat ujian sekolah, hanya akan disangkal dengan ucapan, "Sekolah tak lebih dari sekadar tempat untuk belajar".
+                    </p>
+                    <p align="justify">
+                        Dengan mengatasnamakan 'masa remaja', mereka mampu memutarbalikkan segala bentuk norma atau hal yang sudah berlaku di masyarakat. Bagi mereka, kebohongan, rahasia, kejahatan, bahkan kegagalan sekalipun, mereka anggap sebagai 'bumbu penyedap' dari 'masa remaja'. Segala kecacatan maupun keburukan dari perbuatan tersebut, mereka cap sebagai pengecualian semata. Sedangkan, kumpulan dari setiap kegagalan itu mereka anggap sebagai bagian dari indahnya masa remaja. Dan mereka mencap segala yang bukan 'hasil' dari masa remaja tersebut, tak lain sebagai 'kegagalan' itu sendiri.
+                    </p>
+                    <p align="justify">
+                        'Kegagalan' yang menjadi penanda dari masa remaja itu, bukankah bisa dianggap pula sebagai 'esensi masa remaja' bagi 'mereka yang tak bisa berteman'? Kesemuanya itu penuh dengan standar ganda.
+                    </p>
+                    <p align="justify">
+                        Oleh karenanya, hal tersebut hanyalah omong kosong. Sebuah kebohongan, dusta, hal yang ditutup-tutupi, serta kecurangan yang pantas untuk dikutuk.
+                    </p>
+                    <p> <b>MEREKA</b> sesuatu yang jahat.</p>
+                    <p> Oleh karenanya, tersembunyi keadilan sejati, yang sifatnya paradoks, bagi mereka yang menghindari 'masa remaja'.</p>
+                    <p> Kesimpulan yang bisa kutarik:</p>
+                    <p><b>RIAJUU, MELEDAK SAJA KAU SANA.</b></p>
+
+                    <hr>
+                    <pre>
+    KUTIPAN
+
+    - "Jika masa remaja adalah sesuatu yang indah, mengapa ada begitu banyak luka yang tersisa darinya?"
+
+    - "Masa remaja adalah mimpi indah bagi sebagian orang, namun bagi yang lain, ia tak lebih dari mimpi 
+        buruk yang tak pernah berakhir."
+
+    - "Masa remaja hanyalah fase di mana seseorang belajar menerima kenyataan bahwa dunia tidak seindah 
+        yang mereka bayangkan."
+                    </pre>
+                    <hr>
+                    <p class="w3-right w3-large w3-text-crimson" style="font-family: 'Algerian', sans-serif;">
+                        Arya rama nugraha<br>6304230033
+                    </p>
+                </div>
+
+                <div class="w3-row-padding w3-margin-top w3-center chapter-nav-buttons">
+                    <div class="w3-half">
+                        <a href="../../index.html" class="w3-button w3-blue w3-round w3-padding-large w3-block">HOME</a>
+                    </div>
+                    <div class="w3-half">
+                        <a href="chp1.html" class="w3-button w3-green w3-round w3-padding-large w3-block">SELANJUTNYA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <footer class="w3-container w3-dark-grey w3-padding-32 w3-center w3-opacity w3-hover-opacity-off" id="contact">
+        <h3 class="w3-xlarge">Hubungi Kami</h3>
+        <p>Ikuti kami di sosial media atau hubungi via email/WhatsApp.</p>
+        <p>Email: <a href="aryarn1560@gmail.com" class="w3-hover-text-blue">aryarn1560@gmail.com</a></p>
+        <p>Telepon: <a href="tel:+6283177754533" class="w3-hover-text-blue">+62 831 7775 4533</a></p>
+        
+        <div class="w3-margin-top social-icons">
+            <a href="https://wa.me/6283177754533" target="_blank" class="w3-button w3-blue w3-round"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/kambeng79/" target="_blank" class="w3-button w3-pink w3-round w3-margin-left"><i class="fa fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/yaharinovel" target="_blank" class="w3-button w3-blue w3-round w3-margin-left"><i class="fa fa-facebook-official"></i> Facebook</a>
+        </div>
+
+        <div class="w3-margin-top w3-small">
+            <p>&copy; 2024 Novel Yahari. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+</body>
+</html>
