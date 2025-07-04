@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>FORM INPUT PENGUNJUNG</title>
+</head>
+<body>
+    <center>
+    <form action="savepengunjung.php" method="post">
+    <font size="5">Form Input Pengunjung</font><br>
+    <hr>
+    <table>
+        <tr>
+            <td>Nama Pengunjung</td>
+            <td><input type="text" name="nama_pengunjung"></td>
+        </tr>
+        <tr>
+            <td>Jenis Kelamin</td>
+            <td>
+                <input type="radio" name="jenis_kelamin" value="Laki-laki"> Laki-laki
+                <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan
+            </td>
+        </tr>
+        <tr>
+            <td>Tanggal Berkunjung</td>
+            <td><input type="date" name="tanggal_berkunjung"></td>
+        </tr>
+        <tr>
+            <td>Hobi</td>
+            <td><input type="text" name="hobi"></td>
+        </tr>
+        <tr>
+            <td>Disukai</td>
+            <td><input type="text" name="disukai"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Save"><input type="reset" value="Reset"></td>
+        </tr>
+    </table>
+    </form>
+    </center>
+</body>
+</html>
