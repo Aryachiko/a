@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pencipta Web - Novel Yahari Ore no Seishun Love Come wa Machigatteiru</title>
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5; /* Warna latar belakang lebih lembut */
+            margin: 0;
+            padding: 0;
+            padding-top: 64px; /* Sesuaikan dengan tinggi header */
+        }
+        .w3-top {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .profile-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px; /* Sudut lebih membulat */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Bayangan lebih dalam */
+            text-align: center;
+        }
+        .profile-container h1 {
+            color: #2c3e50; /* Warna judul lebih gelap */
+            margin-bottom: 25px;
+            font-size: 2.5em; /* Ukuran judul lebih besar */
+        }
+        .profile-image {
+            width: 180px; /* Ukuran gambar profil */
+            height: 180px;
+            border-radius: 50%; /* Membuat gambar lingkaran */
+            object-fit: cover; /* Memastikan gambar terisi penuh tanpa distorsi */
+            border: 4px solid #007BFF; /* Bingkai biru pada gambar */
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .profile-info {
+            display: none; /* Hidden by default */
+            margin-top: 30px;
+            padding: 25px;
+            border: 1px solid #e0e0e0; /* Border lebih halus */
+            border-radius: 8px;
+            background-color: #fdfdfd;
+            text-align: left; /* Default text alignment for the box */
+            transition: all 0.5s ease-in-out; /* Transisi halus saat muncul */
+            opacity: 0; /* Mulai dengan transparan */
+            transform: translateY(20px); /* Mulai sedikit ke bawah */
+        }
+        .profile-info.show {
+            display: block;
+            opacity: 1; /* Tampilkan penuh */
+            transform: translateY(0); /* Kembali ke posisi normal */
+        }
+        .profile-info h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        .profile-info h3 {
+            color: #007BFF;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        .profile-info p {
+            margin-bottom: 10px;
+            color: #555;
+            line-height: 1.7;
+            text-align: justify; /* Menerapkan justify pada semua paragraf di dalam .profile-info */
+        }
+        .profile-info strong {
+            color: #007BFF;
+        }
+        /* Style untuk tag mark */
+        .profile-info mark {
+            background-color: #ffe082; /* Warna highlight kuning muda */
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        /* Style untuk underline */
+        .profile-info u {
+            text-decoration: underline;
+            color: #007BFF; /* Warna underline bisa disamakan dengan link atau strong */
+        }
+        .profile-info a {
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .profile-info a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .profile-info ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        .profile-info li {
+            margin-bottom: 8px;
+            text-align: left; /* Pastikan list item tetap rata kiri */
+        }
+        .toggle-button {
+            margin-top: 25px;
+            padding: 14px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 30px; /* Tombol lebih membulat */
+            background-color: #007BFF;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .toggle-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px); /* Efek sedikit terangkat saat hover */
+        }
+        .footer-contact {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .footer-contact a {
+            margin: 0 10px;
+            color: white;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .footer-contact a:hover {
+            color: #007BFF; /* Warna biru saat hover */
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0; /* Padding lebih besar */
+            margin-top: 50px;
+            border-top: 5px solid #007BFF; /* Garis biru di atas footer */
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer .social-icons a {
+            display: inline-block;
+            margin: 0 8px;
+            color: white;
+            font-size: 1.8em;
+            transition: color 0.3s ease;
+        }
+        footer .social-icons a:hover {
+            color: #007BFF;
+        }
+        /* Media query untuk responsif */
+        @media (max-width: 600px) {
+            .profile-container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            .profile-container h1 {
+                font-size: 2em;
+            }
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            .toggle-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .profile-info h2 {
+                font-size: 1.3em;
+            }
+            .profile-info p {
+                text-align: left; /* Di layar kecil, justify kadang kurang bagus, jadi rata kiri saja */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-top w3-bar w3-dark-grey w3-card-4">
+        <div class="w3-container">
+            <a href="index.html#hero" class="w3-bar-item w3-button w3-mobile w3-large w3-hover-none w3-hover-text-light-grey">Novel Yahari</a>
+            
+            <div class="w3-right w3-hide-small">
+                <a href="index.html#volumes" class="w3-bar-item w3-button w3-mobile" title="Lihat semua volume novel">Home</a>
+                <a href="profil.html" class="w3-bar-item w3-button w3-mobile" title="Informasi tentang pencipta web">Profil</a>
+                <a href="karakter.html" class="w3-bar-item w3-button w3-mobile" title="Penjelasan karakter novel">Karakter</a>
+                <a href="ost.html" class="w3-bar-item w3-button w3-mobile" title="Original Soundtrack anime">OST</a>
+                <a href="pengunjung/pengunjung.html" class="w3-bar-item w3-button w3-mobile" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-mobile" title="Kontak pencipta web">Kontak</a>
+            </div>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+            <div id="mobileNav" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+                <a href="index.html#volumes" class="w3-bar-item w3-button" title="Lihat semua volume novel">Home</a>
+                <a href="profil.html" class="w3-bar-item w3-button" title="Informasi tentang pencipta web">Profil</a>
+                <a href="karakter.html" class="w3-bar-item w3-button" title="Penjelasan karakter novel">Karakter</a>
+                <a href="ost.html" class="w3-bar-item w3-button" title="Original Soundtrack anime">OST</a>
+                <a href="pengunjung/pengunjung.html" class="w3-bar-item w3-button" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button" title="Kontak pencipta web">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <img src="1.jpg" alt="Foto Profil Arya Ramadhan" class="profile-image">
+        <h1>Profil Pencipta Website</h1>
+        <p>Halo! Saya Arya Rama Nugraha, pencipta website ini. Senang Anda berkunjung!</p>
+        <button class="toggle-button" onclick="toggleProfileInfo()">Tampilkan Informasi Lebih Lanjut</button>
+
+        <div id="profileDetails" class="profile-info">
+            <h2>Tentang Saya</h2>
+            <p><strong>Nama Lengkap:</strong> Arya Rama Nugraha</p>
+            <p><strong>NIM:</strong> 6304230033</p>
+            <p><strong>Pekerjaan:</strong> Pelajar</p>
+            <p><strong>Minat & Hobi:</strong> Saya memiliki ketertarikan yang besar pada bidang <mark>pemrograman game</mark>, khususnya dalam menciptakan pengalaman bermain yang menarik dan fungsional. Selain itu, saya juga menyukai <b>Anime</b> dan sering menghabiskan waktu luang dengan membaca <i>novel ringan</i>, terutama genre <u>Slice of Life</u> dan <u>Romansa Komedi</u> seperti Oregairu ini.</p>
+            <p><strong>Visi Website:</strong> Website ini adalah proyek personal yang saya buat dengan tujuan untuk berbagi kecintaan saya terhadap novel "<mark><a href="https://en.wikipedia.org/wiki/My_Youth_Romantic_Comedy_Is_Wrong,_As_I_Expected" target="_blank">Yahari Ore no Seishun Love Come wa Machigatteiru</a></mark>" (Oregairu). Saya berharap website ini dapat menjadi sumber informasi yang <mark>bermanfaat dan menyenangkan</mark> bagi sesama penggemar, serta menjadi wadah untuk mengeksplorasi lebih jauh dunia yang kaya dari novel ini. <mark>Pokoknya, Oregairu ini memang "gue banget!"</mark></p>
+            <p>Saya sangat senang bisa berbagi karya ini dengan Anda dan berharap Anda menikmati setiap bagian dari website Novel Yahari ini!</p>
+
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+
+            <h3>Tentang Novel "Yahari Ore no Seishun Love Come wa Machigatteiru" (Oregairu)</h3>
+            <p>"<b>Yahari Ore no Seishun Love Come wa Machigatteiru</b>" (yang sering disingkat <b>Oregairu</b> atau My Teen Romantic Comedy SNAFU) adalah seri novel ringan Jepang yang <mark>sangat populer</mark>. Cerita ini berpusat pada <strong>Hachiman Hikigaya</strong>, seorang siswa SMA <i>sinis dan realistis</i> yang tidak punya teman dan menganut pandangan hidup yang distorsi. Oleh guru pembimbingnya, ia dipaksa bergabung dengan <mark>Service Club</mark>, sebuah klub yang bertujuan membantu siswa lain dalam masalah mereka.</p>
+            <p>Di Service Club, Hachiman bertemu dengan <strong>Yukino Yukinoshita</strong>, seorang gadis <i>cantik, cerdas, namun juga dingin dan blak-blakan</i>, serta <strong>Yui Yuigahama</strong>, gadis <i>ceria dan ramah</i> yang menjadi jembatan antara Hachiman dan Yukino. Bersama-sama, mereka menghadapi berbagai permintaan dari siswa lain, yang seringkali mengungkapkan <u>kompleksitas hubungan sosial dan psikologi remaja</u>.</p>
+            <p>Novel ini dikenal karena <mark>dialognya yang cerdas</mark>, karakterisasi yang mendalam, dan eksplorasi tema-tema seperti isolasi sosial, kedewasaan, kejujuran, dan arti dari "<mark>sesuatu yang otentik</mark>."</p>
+            <p>Selain novelnya, Oregairu juga telah diadaptasi menjadi berbagai media lain:</p>
+            <ul>
+                <li><b>Adaptasi Anime:</b> Seri anime ini sangat populer dan bisa ditemukan informasinya di <a href="https://myanimelist.net/anime/14813/Yahari_Ore_no_Seishun_Love_Comedy_wa_Machigatteiru" target="_blank">MyAnimeList - Oregairu Anime</a>.</li>
+                <li><b>Adaptasi Manga:</b> Ada beberapa adaptasi manga dari seri ini. Anda bisa mencari informasi lebih lanjut di <a href="https://myanimelist.net/manga/40171/Yahari_Ore_no_Seishun_Love_Comedy_wa_Machigatteiru_-_Monologue" target="_blank">MyAnimeList - Oregairu Manga</a>.</li>
+            </ul>
+
+            <h3>Tentang Pengarang: Watari Wataru</h3>
+            <p><a href="https://en.wikipedia.org/wiki/Wataru_Watari" target="_blank"><strong>Watari Wataru</strong></a> adalah penulis di balik seri novel ringan "<b>Yahari Ore no Seishun Love Come wa Machigatteiru</b>." Ia dikenal dengan gaya penulisannya yang <mark>unik</mark>, menggabungkan <i>humor satir, observasi sosial yang tajam, dan eksplorasi emosi karakter yang kompleks</i>. Karyanya telah menerima banyak pujian kritis dan memenangkan berbagai penghargaan, termasuk <mark>Sugoi Japan Award</mark> untuk kategori novel ringan. Ilustrasi untuk novel ini digarap oleh <a href="https://myanimelist.net/people/20305/Ponkan8" target="_blank"><strong>Ponkan8</strong></a>, yang visualnya sangat berkontribusi pada popularitas seri ini.</p>
+            <p>Watari Wataru berhasil menciptakan dunia dan karakter yang <mark>relatable namun juga provokatif</mark>, membuat pembaca merenungkan kembali pandangan mereka tentang hubungan manusia dan masyarakat.</p>
+        </div>
+    </div>
+
+    <footer id="contact" class="w3-container w3-dark-grey w3-padding-32 w3-center w3-opacity w3-hover-opacity-off">
+        <h3 class="w3-xlarge">Hubungi Saya</h3>
+        <p>Anda bisa menghubungi saya melalui berbagai platform di bawah ini:</p>
+        
+        <div class="w3-margin-top social-icons">
+            <a href="https://wa.me/6283177754533" target="_blank" class="w3-button w3-green w3-round"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/kambeng79/" target="_blank" class="w3-button w3-pink w3-round w3-margin-left"><i class="fa fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/yaharinovel" target="_blank" class="w3-button w3-blue w3-round w3-margin-left"><i class="fa fa-facebook-official"></i> Facebook</a>
+            <a href="mailto:aryarn1560@gmail.com" class="w3-button w3-red w3-round w3-margin-left"><i class="fa fa-envelope"></i> Email</a>
+        </div>
+
+        <div class="w3-margin-top w3-small">
+            <p>Email: <a href="mailto:aryarn1560@gmail.com" class="w3-hover-text-light-grey">aryarn1560@gmail.com</a></p>
+            <p>Telepon: <a href="tel:+6283177754533" class="w3-hover-text-light-grey">+62 831 7775 4533</a></p>
+        </div>
+
+        <div class="w3-margin-top w3-small">
+            <p>&copy; 2024 Novel Yahari. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleProfileInfo() {
+            var profileDiv = document.getElementById("profileDetails");
+            var button = document.querySelector(".toggle-button");
+
+            if (profileDiv.classList.contains("show")) {
+                profileDiv.classList.remove("show");
+                profileDiv.addEventListener('transitionend', function handler() {
+                    profileDiv.style.display = "none";
+                    profileDiv.removeEventListener('transitionend', handler);
+                });
+                button.textContent = "Tampilkan Informasi Lebih Lanjut";
+            } else {
+                profileDiv.style.display = "block"; 
+                setTimeout(() => { 
+                    profileDiv.classList.add("show");
+                }, 10); 
+                button.textContent = "Sembunyikan Informasi";
+            }
+        }
+
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+            }
+        }
+    </script>
+
+</body>
+</html>

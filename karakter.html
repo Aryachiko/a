@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karakter - Yahari Ore no Seishun Love Come wa Machigatteiru</title>
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth; /* Untuk scroll halus antar section */
+        }
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding-top: 64px; /* Sesuaikan dengan tinggi header */
+        }
+        .w3-top {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .character-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .character-container h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+        .character-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fdfdfd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+        .character-card.reverse { /* Untuk layout bergantian */
+            flex-direction: row-reverse;
+        }
+        .character-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007BFF;
+            margin-right: 25px; /* Jarak antara gambar dan info */
+            flex-shrink: 0; /* Mencegah gambar mengecil */
+        }
+        .character-card.reverse .character-image {
+            margin-left: 25px;
+            margin-right: 0;
+        }
+        .character-info {
+            flex-grow: 1; /* Memungkinkan info mengisi sisa ruang */
+        }
+        .character-info h2 {
+            color: #007BFF;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+        .character-info p {
+            margin-bottom: 8px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .character-info strong {
+            color: #34495e;
+        }
+        .character-info ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .character-info li {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        /* Style untuk footer agar sesuai dengan index.html */
+        
+
+
+        /* Media query untuk responsif */
+        @media (max-width: 768px) {
+            .character-card {
+                flex-direction: column; /* Ubah ke kolom di layar kecil */
+                text-align: center;
+            }
+            .character-card.reverse {
+                flex-direction: column; /* Tetap kolom */
+            }
+            .character-image {
+                margin-right: 0;
+                margin-bottom: 15px; /* Tambah jarak bawah */
+            }
+            .character-card.reverse .character-image {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            .character-info {
+                text-align: center; /* Pusatkan teks info */
+            }
+            .character-info ul {
+                text-align: center; /* Pusatkan list item */
+                padding-left: 0; /* Hapus padding default ul */
+            }
+            .character-info li {
+                display: inline-block; /* Buat list item sejajar */
+                margin: 0 5px; /* Beri jarak antar item */
+            }
+        }
+        @media (max-width: 480px) {
+            .character-container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            .character-container h1 {
+                font-size: 2em;
+            }
+            .character-image {
+                width: 120px;
+                height: 120px;
+            }
+            .character-info h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="w3-top w3-bar w3-dark-grey w3-card-4">
+        <div class="w3-container">
+            <a href="index.html#hero" class="w3-bar-item w3-button w3-mobile w3-large w3-hover-none w3-hover-text-light-grey">Novel Yahari</a>
+            
+            <div class="w3-right w3-hide-small">
+                <a href="index.html#volumes" class="w3-bar-item w3-button w3-mobile" title="Lihat semua volume novel">Home</a>
+                <a href="profil.html" class="w3-bar-item w3-button w3-mobile" title="Informasi tentang pencipta web">Profil</a>
+                <a href="karakter.html" class="w3-bar-item w3-button w3-mobile" title="Penjelasan karakter novel">Karakter</a>
+                <a href="ost.html" class="w3-bar-item w3-button w3-mobile" title="Original Soundtrack anime">OST</a>
+                <a href="pengunjung/pengunjung.html" class="w3-bar-item w3-button w3-mobile" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-mobile" title="Kontak pencipta web">Kontak</a>
+            </div>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+            <div id="mobileNav" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+                <a href="index.html#volumes" class="w3-bar-item w3-button" title="Lihat semua volume novel">Home</a>
+                <a href="profil.html" class="w3-bar-item w3-button" title="Informasi tentang pencipta web">Profil</a>
+                <a href="karakter.html" class="w3-bar-item w3-button" title="Penjelasan karakter novel">Karakter</a>
+                <a href="ost.html" class="w3-bar-item w3-button" title="Original Soundtrack anime">OST</a>
+                <a href="pengunjung/pengunjung.html" class="w3-bar-item w3-button" title="Daftar pengunjung (CRUD)">Pengunjung</a>
+                <a href="#contact" class="w3-bar-item w3-button" title="Kontak pencipta web">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="character-container">
+        <h1>Daftar Karakter Utama</h1>
+
+        <div class="character-card">
+            <img src="karakter/Hachiman Hikigaya.jpg" alt="Hachiman Hikigaya" class="character-image">
+            <div class="character-info">
+                <h2>Hachiman Hikigaya</h2>
+                <p><strong>Umur:</strong> 17 tahun</p>
+                <p><strong>Jenis Kelamin:</strong> Pria</p>
+                <p><strong>Tinggi:</strong> 173 cm</p>
+                <p><strong>Berat:</strong> 62 kg</p>
+                <p><strong>Deskripsi Singkat:</strong> Protagonis utama yang sinis, realistis, dan memiliki pandangan hidup yang distorsi. Ia sering dijuluki "Hachiman Botol" karena matanya yang seperti ikan mati.</p>
+            </div>
+        </div>
+
+        <div class="character-card reverse">
+            <img src="karakter/Yukinoshita.jpg" alt="Yukino Yukinoshita" class="character-image">
+            <div class="character-info">
+                <h2>Yukino Yukinoshita</h2>
+                <p><strong>Umur:</strong> 17 tahun</p>
+                <p><strong>Jenis Kelamin:</strong> Wanita</p>
+                <p><strong>Tinggi:</strong> 163 cm</p>
+                <p><strong>Berat:</strong> 47 kg</p>
+                <p><strong>Ukuran:</strong> B86 / W56 / H84</p>
+                <p><strong>Deskripsi Singkat:</strong> Pendiri dan ketua Service Club. Cantik, cerdas, namun blak-blakan dan sering bersikap dingin. Ia berasal dari keluarga terpandang.</p>
+            </div>
+        </div>
+
+        <div class="character-card">
+            <img src="karakter/Yui Yuigahama.jpg" alt="Yui Yuigahama" class="character-image">
+            <div class="character-info">
+                <h2>Yui Yuigahama</h2>
+                <p><strong>Umur:</strong> 17 tahun</p>
+                <p><strong>Jenis Kelamin:</strong> Wanita</p>
+                <p><strong>Tinggi:</strong> 161 cm</p>
+                <p><strong>Berat:</strong> 48 kg</p>
+                <p><strong>Ukuran:</strong> B90 / W60 / H88</p>
+                <p><strong>Deskripsi Singkat:</strong> Anggota Service Club yang ceria, ramah, dan populer. Ia berusaha menjadi jembatan antara Hachiman dan Yukino.</p>
+            </div>
+        </div>
+
+        <div class="character-card reverse">
+            <img src="karakter/Iroha Isshiki • Oregairu.jpg" alt="Iroha Isshiki" class="character-image">
+            <div class="character-info">
+                <h2>Iroha Isshiki</h2>
+                <p><strong>Umur:</strong> 16 tahun</p>
+                <p><strong>Jenis Kelamin:</strong> Wanita</p>
+                <p><strong>Tinggi:</strong> 156 cm</p>
+                <p><strong>Berat:</strong> 44 kg</p>
+                <p><strong>Ukuran:</strong> B80 / W54 / H82</p>
+                <p><strong>Deskripsi Singkat:</strong> Siswi tahun pertama yang manipulatif dan imut, sering meminta bantuan Service Club. Ia kemudian menjadi ketua OSIS.</p>
+            </div>
+        </div>
+
+        <div class="character-card">
+            <img src="karakter/shizuka.jpg" alt="Shizuka Hiratsuka" class="character-image">
+            <div class="character-info">
+                <h2>Shizuka Hiratsuka</h2>
+                <p><strong>Umur:</strong> 20-an akhir / 30-an awal</p>
+                <p><strong>Jenis Kelamin:</strong> Wanita</p>
+                <p><strong>Tinggi:</strong> 165 cm</p>
+                <p><strong>Berat:</strong> 50 kg</p>
+                <p><strong>Ukuran:</strong> B95 / W62 / H90</p>
+                <p><strong>Deskripsi Singkat:</strong> Guru pembimbing Hachiman dan penasihat Service Club. Ia sering memberikan nasihat bijak dan peduli pada murid-muridnya.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="contact" class="w3-container w3-dark-grey w3-padding-32 w3-center w3-opacity w3-hover-opacity-off">
+        <h3 class="w3-xlarge">Hubungi Kami</h3>
+        <p>Ikuti kami di sosial media atau hubungi via email/WhatsApp.</p>
+        <p>Email: <a href="mailto:aryarn1560@gmail.com" class="w3-hover-text-blue">aryarn1560@gmail.com</a></p>
+        <p>Telepon: <a href="tel:+6283177754533" class="w3-hover-text-blue">+62 831 7775 4533</a></p>
+        
+        <div class="w3-margin-top social-icons">
+            <a href="https://wa.me/6283177754533" target="_blank" class="w3-button w3-green w3-round"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/kambeng79/" target="_blank" class="w3-button w3-pink w3-round w3-margin-left"><i class="fa fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/yaharinovel" target="_blank" class="w3-button w3-blue w3-round w3-margin-left"><i class="fa fa-facebook-official"></i> Facebook</a>
+        </div>
+
+        <div class="w3-margin-top w3-small">
+            <p>&copy; 2024 Novel Yahari. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+            }
+        }
+    </script>
+
+</body>
+</html>
