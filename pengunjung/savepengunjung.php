@@ -10,7 +10,7 @@ Informasi Data Pengunjung
 <hr width="320">
 <table>
 <?php
-require ("Koneksi.php");
+require ("Koneksi.php"); // Memanggil Koneksi.php yang sekarang berisi fungsi file
 
 $nama_pengunjung = $_POST['nama_pengunjung'];
 $jenis_kelamin = $_POST['jenis_kelamin'];
@@ -30,23 +30,29 @@ echo "<tr><td>Disukai</td><td>" . htmlspecialchars($disukai) . "</td></tr>";
 <?php
 
 if (!empty($nama_pengunjung)){
+    $visitors = readVisitors();
+    $newId = getNextId(); // Dapatkan ID unik baru
 
-    $sql = "INSERT INTO pengunjung (nama_pengunjung, jenis_kelamin, tanggal_berkunjung, hobi, disukai) VALUES ('$nama_pengunjung', '$jenis_kelamin', '$tanggal_berkunjung', '$hobi', '$disukai')";
+    $newVisitor = [
+        'id' => $newId,
+        'nama_pengunjung' => $nama_pengunjung,
+        'jenis_kelamin' => $jenis_kelamin,
+        'tanggal_berkunjung' => $tanggal_berkunjung,
+        'hobi' => $hobi,
+        'disukai' => $disukai
+    ];
 
-    $hasil = mysqli_query($conn, $sql);
+    $visitors[] = $newVisitor; // Tambahkan pengunjung baru ke array
+    writeVisitors($visitors); // Tulis kembali seluruh array ke file
 
-    if ($hasil) {
-        echo "Data telah ditambahkan";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+    // Log ke histori
+    logHistory('ADD', $newId, $nama_pengunjung, 'Data baru ditambahkan');
+
+    echo "Data Pengunjung Berhasil Disimpan!";
+} else {
+    echo "Nama Pengunjung tidak boleh kosong!";
 }
-else
-{
-    echo "Nama Pengunjung Tidak Boleh Kosong";
-}
 
-mysqli_close($conn);
 ?>
 </center>
 </body>
